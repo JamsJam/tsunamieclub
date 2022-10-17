@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{asset("build/app.css")}}">
+        
+    <title>
+        {% block title %}
+            Tsunami Club | 
+        {% endblock %}
+    </title>
+</head>
+<body>
+<header class='baseHeader'>
+    <nav class="nav">
+        <div><a href="#" class="nav__bouton">Logo</a></div>
+        <div><a href="#" class="nav__bouton">Tsunami</a></div>
+        <div><a href="#" class="nav__bouton">Tsunami</a></div>
+        <div><a href="#" class="nav__bouton">Tsunami</a></div>
+    </nav>
+</header>
+<main>
+    <div class="mainContainer">
+        {% block body %}{% endblock %}
+    </div>
+</main>
+<footer class="footer">
+    <p class="footer__droit">Tout droit reservé</p>
+</footer>
+<script src="{{asset("build/app.js")}}"></script>
+</body>
+</html>
