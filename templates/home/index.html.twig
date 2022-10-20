@@ -4,6 +4,20 @@
 
 {% block body %}
 
+    {#? ================================================   #}
+                {#* Messages flashs  #}
+    {#? ================================================   #}
+
+    {#!  confirm inscription ref: RegistrationController l.122#}
+    {% for message in app.flashes('confirm') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {#? ================================================   #}
+                {#*Fin Messages flashs  #}
+    {#? ================================================   #}
     <div class="accueil">
 
         {# Section Presentation #}

@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
+
+use App\Service\ApiKey;
 use App\Entity\Adherant;
+use App\Service\MailJet;
 use App\Security\EmailVerifier;
 use App\Form\RegistrationFormType;
 use App\Repository\AdherantRepository;
-use Symfony\Component\Mime\Address;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +18,7 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+
 
 class RegistrationController extends AbstractController
 {
@@ -35,7 +36,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, AdherantRepository $ar, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, AdherantRepository $ar,ApiKey $mjKey, VerifyEmailHelperInterface $helper,string $verifyEmailRouteName = "app_verify_email"): Response
     {
         $user = new Adherant();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -52,32 +53,46 @@ class RegistrationController extends AbstractController
 
             $ar->add($user, true);
             
-            $signatureComponents = $this->verifyEmailHelper->generateSignature(
-                'app_verify_email',
+            //? =================================================
+            //*         *********** EMAIL ************
+            //? =================================================
+
+
+            //! Recuperation de l'API MailJet
+            $key = $mjKey->getKey();
+            $secret_key = $mjKey->getSecretKey();
+
+            $signatureComponents = $helper->generateSignature(
+                $verifyEmailRouteName,
                 $user->getId(),
                 $user->getEmail()
             );
-        
-        $email = (new TemplatedEmail())
-            ->from(new Address('j.antoine971@hotmail.fr', 'Contact Tsunami'))
-            ->to('j.antoine971@hotmail.fr')
-            ->subject('confirm your email')
-            ->htmlTemplate('registration/confirmation_email.html.twig');
-            
-            
-        $context = $email->getContext();
-        $context['signedUrl'] = $signatureComponents->getSignedUrl();
-        $context['expiresAtMessageKey'] = $signatureComponents->getExpirationMessageKey();
-        $context['expiresAtMessageData'] = $signatureComponents->getExpirationMessageData();
 
-        $email->context($context);
 
-        // dd($email->htmlTemplate);
+            $email = new MailJet();
+            $email->send(
+                $key,
+                $secret_key,
+                "j.antoine971@hotmail.com", //?Email  
+                "NewUser", //? Nom
+                "Bienvenue sur notre site", //? Subject 
+                //? Contenue
+                "<h1>Hi! Please confirm your email!</h1><p>Please confirm your email address by clicking the following link: <br><br><a href=\"{{var:signedUrl:\"\"}}\">Confirm my Email</a>.</p><p>Cheers!</p>",
+                //? Variable
+                [
+                    'signedUrl' => $signatureComponents->getSignedUrl(),
+                    // 'expiresAtMessageKey' => $signatureComponents->getExpirationMessageKey(),
+                    // 'expiresAtMessageData' => $signatureComponents->getExpirationMessageData()
+                ]);
+                
+
+        //? =================================================
+        //*         *********** FIN EMAIL ************
+        //? =================================================
         
-        
-        
-        $mailer->send($email);
-            // do anything else you need here, like send an email
+
+
+
 
             return $this->redirectToRoute('app_home');
         }
@@ -103,9 +118,9 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+        //TODO Change the redirect on success and handle or remove the flash message in your templates
+        $this->addFlash('confirm', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('app_home');
     }
 }
