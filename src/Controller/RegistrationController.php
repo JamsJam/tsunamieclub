@@ -67,28 +67,25 @@ class RegistrationController extends AbstractController
                 $user->getId(),
                 $user->getEmail()
             );
-
-
             $email = new MailJet();
             $email->send(
                 $key,
                 $secret_key,
-                "j.antoine971@hotmail.com", //?Email  
-                "NewUser", //? Nom
-                "Bienvenue sur notre site", //? Subject 
+                //? Email  
+                "j.antoine971@hotmail.com", 
+                //? Nom
+                "NewUser", 
+                //? Subject 
+                "Bienvenue sur notre site",
                 //? Contenue
                 "<h1>Hi! Please confirm your email!</h1><p>Please confirm your email address by clicking the following link: <br><br><a href=\"{{var:signedUrl:\"\"}}\">Confirm my Email</a>.</p><p>Cheers!</p>",
                 //? Variable
                 [
                     'signedUrl' => $signatureComponents->getSignedUrl(),
-                    // 'expiresAtMessageKey' => $signatureComponents->getExpirationMessageKey(),
-                    // 'expiresAtMessageData' => $signatureComponents->getExpirationMessageData()
                 ]);
-                
-
-        //? =================================================
-        //*         *********** FIN EMAIL ************
-        //? =================================================
+            //? =================================================
+            //*         *********** FIN EMAIL ************
+            //? =================================================
         
 
 
