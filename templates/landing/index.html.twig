@@ -9,12 +9,15 @@
     </head>
     <body>
         <main class="accueil">
-            <h1 class="accueil__title">BIENVENUE SUR LE SITE DU TSUNAMI CLUB</h1>
-            <div class="accueil_btn">
-                <a href="{{path("app_home")}}" class="accueil_btn btn--primary">Accueil</a>
-                <a href="" class="accueil_btn btn--primary">Connexion</a>
+            <div class="accueil_overlay">
+
+                <h1 class="accueil__title">BIENVENUE SUR LE SITE DU TSUNAMI CLUB</h1>
+                <div class="accueil_btn">
+                    <a href="{{path("app_home")}}" class="accueil_btnAccueil btn--primary">Accueil</a>
+                    <a href="" class="accueil_btnConnexion btn--primary">Connexion</a>
+                </div>
+                
             </div>
-            div
         </main>
         <script src="{{asset("build/app.js")}}"></script>
     </body>
