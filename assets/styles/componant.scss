@@ -2,12 +2,6 @@
 @import '_mixin.scss';
 
 
-
-
-
-
-
-
 //? ===================================
 //*                 Bouton
 //? ===================================
@@ -32,7 +26,7 @@
     }
     &--secondary{
         
-        @include bouton-colors( hsla(0, 0%, 15%, 0.6), #fcfcfcff, #fcfcfcff 2px solid);
+        @include bouton-colors( hsla(0, 0%, 15%, 0.4), #fcfcfcff, #fcfcfcff 2px solid);
         &:hover{
             @include bouton-colors(hsl(0, 0%, 70%), #262626ff, none)
         }
@@ -200,6 +194,7 @@
 
         }
     }
+
     .nav__mobile--active{
         left : 0 !important;
     }
@@ -245,3 +240,12 @@
         }
     }
 }
+
+//? ===================================
+//*                 Main
+//? ===================================
+
+.main__container{
+    min-height: 70vh;
+}
+

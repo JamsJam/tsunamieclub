@@ -4,9 +4,32 @@
 
 {% block body %}
 
-    {#? ================================================   #}
-                {#* Messages flashs  #}
-    {#? ================================================   #}
+<section class="club">
+
+    <div class="club__mainTitle">
+        <h1 class=" title title--h1">
+            LE JUDO : PLUS QU’UN ART MARTIAL, UNE ECOLE DE VIE
+        </h1>
+    </div>
+
+    <div class="club__title">
+        <h2 class="title title--h2">
+            Notre club et ses valeurs
+        </h2>
+    </div>
+
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, ullam?
+    </p>
+
+    <a href="#" class="bouton bouton--secondary">Mon Club</a>
+</section>
+
+{#
+?       ================================================
+*               Messages flashs
+?       ================================================   
+#}
 
     {#!  confirm inscription ref: RegistrationController l.122#}
     {% for message in app.flashes('confirm') %}
@@ -15,8 +38,12 @@
         </div>
     {% endfor %}
 
-    {#? ================================================   #}
-                {#*Fin Messages flashs  #}
-    {#? ================================================   #}
+{#
+?       ================================================   
+*               Fin Messages flashs 
+?       ================================================   
+#}
+
+
 
 {% endblock %}

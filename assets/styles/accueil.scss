@@ -1,0 +1,9 @@
+@import '_mixin.scss';
+@import 'set.scss';
+
+.club{
+    color:$font__color--primary;
+    @include fullSizeImage("centure-noir.webp");
+    @include flex-column-around ;
+    height: 70vh;
+}

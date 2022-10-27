@@ -2,11 +2,8 @@
 
 
 .landing{
+    @include fullSizeImage("salut-noir.webp");
     
-    background-image: url(../images/salut-noir.webp);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 
     &__overlay{
         height: 100vh;

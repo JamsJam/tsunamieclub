@@ -13,60 +13,66 @@
     </title>
 </head>
 <body>
-<header class='header'>
-    <nav class="nav">
 
-        <div class="nav__logo">
-            <a href="{{path("app_home")}}" class="nav-link">Logo</a>
+    <header class='header'>
+        <nav class="nav">
+
+            <div class="nav__logo">
+                <a href="{{path("app_home")}}" class="nav-link">Logo</a>
+            </div>
+
+            <div class="nav__menu" >
+                <a href="#" class="nav-link">Horaire</a>
+                <a href="#" class="nav-link">Evenement</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav__connexion">
+                <a href="{{path("app_register")}}" class="nav-link">Inscription</a>
+                <a href="{{path("app_login")}}" class="nav-link">Connexion</a>
+            </div>
+
+            <div class="nav__burger">
+                <span class="burger" id="burgerNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+
+            <div class="nav__mobile" id="navMobile">
+                <a href="#" class="nav-link link-group">Horaire</a>
+                <a href="#" class="nav-link link-group">Evenement</a>
+                <a href="#" class="nav-link link-group">Contact</a>
+                <a href="{{path("app_register")}}" class="nav-link">Inscription</a>
+                <a href="{{path("app_login")}}" class="nav-link">Connexion</a>
+            </div>
+
+        </nav>
+    </header>
+
+    <main>
+        <div class="main__container">
+        {% block body %}
+            
+        {% endblock %}
         </div>
+    </main>
 
-        <div class="nav__menu" >
-            <a href="#" class="nav-link">Horaire</a>
-            <a href="#" class="nav-link">Evenement</a>
-            <a href="#" class="nav-link">Contact</a>
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, nisi.</div>
+            <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, nisi.</div>
         </div>
-
-        <div class="nav__connexion">
-            <a href="{{path("app_register")}}" class="nav-link">Inscription</a>
-            <a href="{{path("app_login")}}" class="nav-link">Connexion</a>
+        <div class="footer__content">
+            <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis.</div>
+            <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis.</div>
         </div>
-
-        <div class="nav__burger">
-            <span class="burger" id="burgerNav">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
+        <div class="footer__content-last">
+            <p>Lorem ipsum dolor sit amet</p>
         </div>
+    </footer>
 
-        <div class="nav__mobile" id="navMobile">
-            <a href="#" class="nav-link link-group">Horaire</a>
-            <a href="#" class="nav-link link-group">Evenement</a>
-            <a href="#" class="nav-link link-group">Contact</a>
-            <a href="{{path("app_register")}}" class="nav-link">Inscription</a>
-            <a href="{{path("app_login")}}" class="nav-link">Connexion</a>
-        </div>
-
-    </nav>
-</header>
-<main>
-{% block body %}
-    
-{% endblock %}
-</main>
-<footer class="footer">
-    <div class="footer__content">
-        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, nisi.</div>
-        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, nisi.</div>
-    </div>
-    <div class="footer__content">
-        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis.</div>
-        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis.</div>
-    </div>
-    <div class="footer__content-last">
-        <p>Lorem ipsum dolor sit amet</p>
-    </div>
-</footer>
 <script src="{{asset("js/custom.js")}}"></script>
 <script src="{{asset("build/app.js")}}"></script>
 

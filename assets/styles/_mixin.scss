@@ -1,6 +1,6 @@
-//? =====================
-//*    Flex
-//? =====================
+//? ======================================================
+//*                     Flex
+//? ======================================================
 
 @mixin flex-row-center{
     display: flex;
@@ -8,12 +8,7 @@
     align-items: center;
     justify-content: center;
 }
-@mixin flex-column-center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+
 
 @mixin flex-row-around{
     display: flex;
@@ -34,11 +29,24 @@
     justify-content: space-evenly;
 }
 
+@mixin flex-column-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+@mixin flex-column-around{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
 
 
-//? =====================
-//*     Border-radius
-//? =====================
+
+//? ======================================================
+//*                    Border-radius
+//? ======================================================
 
 @mixin radius($radius){
     -moz-border-radius: $radius;
@@ -47,9 +55,9 @@
 }
 
 
-//? =====================
-//*       Bouton
-//? =====================
+//? ======================================================
+//*                     Bouton
+//? ======================================================
 
 
 @mixin bouton-size{
@@ -64,15 +72,33 @@
     border: $border;
 }
 
-//? =====================
-//*     titre
-//? =====================
+
+
+//? ======================================================
+//*                     Font
+//? ======================================================
 
 $font--title: Lato, sans-serif;
 
-//? ===========================
-//*     linear-background
-//? ===========================
+
+
+//? ======================================================
+//*             image background Responsive
+//? ======================================================
+
+
+
+
+//? ======================================================
+//*             image background Responsive
+//? ======================================================
+
+@mixin fullSizeImage($image){
+    background-image: url("../images/"+$image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 
 

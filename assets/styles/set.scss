@@ -16,6 +16,14 @@
 
 
 //? ===================================
+//*           COLOR      
+//? ===================================
+
+$font__color--primary: #fefefe;
+
+
+
+//? ===================================
 //*           FONT      
 //? ===================================
 
@@ -24,9 +32,9 @@
     font-weight: 400;
     letter-spacing: 2px;
 //todo a completer en faisant la page accueil
-    // &--h1{
-    //     font-size: ;
-    // }
+    &--h1{
+        font-size: 2.5rem;
+    }
     &--h2{
         font-size: 1.5rem;
     }
