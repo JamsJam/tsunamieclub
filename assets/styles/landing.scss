@@ -1,0 +1,71 @@
+@import '_mixin.scss';
+
+
+.landing{
+    
+    background-image: url(../images/salut-noir.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &__overlay{
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        
+    }
+
+    &__title{
+
+        width: max(90vw, 320px);
+        margin-inline: auto;
+        padding-inline: clamp(0.625em, 1vw, 2em);
+
+        h1{
+            font-size: clamp(2rem, 1.2864rem + 3.5682vw, 4.5rem);
+            text-align: center;
+            color: white;
+        }
+
+    }
+    
+    &__btn{
+        @include flex-row-center();
+        gap:2.5rem;
+        flex-wrap: wrap;
+        
+
+        @media screen and (max-width: 540px){
+            .bouton--secondary{
+                display: none;
+            }
+        }
+    }
+    
+    &__login{
+
+        position:absolute;
+        right: 20px;
+        top: 20px;
+
+
+        .login__icon{
+
+            height: 48px;
+            
+
+        }
+
+        @media screen and (min-width: 540px){
+            &{
+                display: none;
+            }
+        }
+    
+    }
+}
+

@@ -1,0 +1,60 @@
+
+@import '_mixin.scss';
+
+
+
+
+
+
+
+
+//? ===================================
+//*                 Bouton
+//? ===================================
+
+.bouton{
+    @include radius(10px);
+    @include bouton-size();
+    @include flex-row-center();
+    transition: 
+        color 0.4s ease-in-out,
+        background-color 0.4s ease-in-out;
+    font-size: 1.5rem;
+    
+    &--primary{
+        
+        @include bouton-colors(hsl(0, 0%, 89%), #262626ff, none);
+
+        &:hover{
+            @include bouton-colors( hsla(0, 0%, 15%, 0.6), #fcfcfcff, #fcfcfcff 2px solid)
+        }
+
+    }
+    &--secondary{
+        
+        @include bouton-colors( hsla(0, 0%, 15%, 0.6), #fcfcfcff, #fcfcfcff 2px solid);
+        &:hover{
+            @include bouton-colors(hsl(0, 0%, 70%), #262626ff, none)
+        }
+    }
+//  &--connexion{
+//      @include bouton-colors( hsla(0, 0%, 15%, 1), #fcfcfcff, none);
+//      &:hover{
+//          @include bouton-colors(hsl(0, 0%, 89%), #262626ff, none);
+//      }
+//  }
+}
+//? ===================================
+//*                 Header
+//? ===================================
+
+.header{
+    background: linear-gradient(hsl(0deg,0%,80%),hsl(0deg,0%,60%));
+    .nav{
+        height: 7em;
+        
+        font-size: 2rem;
+        @include flex-row-center
+
+    }
+}

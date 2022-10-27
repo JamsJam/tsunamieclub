@@ -8,17 +8,31 @@
         <title>Tsunami Club | Club de Judo</title>
     </head>
     <body>
-        <main class="accueil">
-            <div class="accueil_overlay">
 
-                <h1 class="accueil__title">BIENVENUE SUR LE SITE DU TSUNAMI CLUB</h1>
-                <div class="accueil_btn">
-                    <a href="{{path("app_home")}}" class="accueil_btnAccueil btn--primary">Accueil</a>
-                    <a href="#" class="accueil_btnConnexion btn--primary">Connexion</a>
+
+        <main class="landing">
+            <div class="landing__login">
+                <a href="{{path("app_login")}}">
+                    <img src="{{asset("icon/register.png")}}"  alt="icone login" class="login__icon">
+                </a>
+            </div>
+            <div class="landing__overlay">
+
+                <div class="landing__title ">
+                    <h1 class="title">BIENVENUE SUR LE SITE DU TSUNAMI CLUB</h1>
+                </div>
+                
+                <div class="landing__btn">
+                    <a href="{{path("app_home")}}" class="bouton bouton--primary">Accueil</a>
+                    <a href="{{path("app_login")}}" class="bouton bouton--secondary">Connexion</a>
                 </div>
                 
             </div>
+            
+            
         </main>
+
+
         <script src="{{asset("build/app.js")}}"></script>
     </body>
 </html>

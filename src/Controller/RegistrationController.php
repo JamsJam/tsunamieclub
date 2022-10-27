@@ -72,7 +72,7 @@ class RegistrationController extends AbstractController
                 $key,
                 $secret_key,
                 //? Email  
-                "j.antoine971@hotmail.com", 
+                $user->getEmail(), 
                 //? Nom
                 "NewUser", 
                 //? Subject 

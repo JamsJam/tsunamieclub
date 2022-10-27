@@ -1,0 +1,53 @@
+//? =====================
+//*    Flex
+//? =====================
+
+@mixin flex-row-center{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+//? =====================
+//*     Border-radius
+//? =====================
+
+@mixin radius($radius){
+    -moz-border-radius: $radius;
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+
+//? =====================
+//*     Bouton
+//? =====================
+
+
+@mixin bouton-size{
+    height: clamp(50px,14vw,60px);
+    width: clamp(250px,30vw,320px);
+
+}
+
+@mixin bouton-colors( $bg, $color,  $border){
+    background-color: $bg;
+    color: $color;
+    border: $border;
+}
+
+//? =====================
+//*     titre
+//? =====================
+
+$font--title: Lato, sans-serif;
+
+//? ===========================
+//*     linear-background
+//? ===========================
+
+
+
