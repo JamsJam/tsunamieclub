@@ -28,7 +28,7 @@
         
         @include bouton-colors( hsla(0, 0%, 15%, 0.4), #fcfcfcff, #fcfcfcff 2px solid);
         &:hover{
-            @include bouton-colors(hsl(0, 0%, 70%), #262626ff, none)
+            @include bouton-colors(hsl(0, 0%, 70%), #262626ff, hsl(0, 0%, 70%) 2px solid)
         }
     }
 //  &--connexion{

@@ -4,67 +4,145 @@
 
 {% block body %}
 
-<section class="club">
-    <div class="overlay">
-        <div class="club__mainTitle">
-            <h1 class=" title title--h1">
-                LE JUDO : PLUS QU’UN ART MARTIAL, UNE ECOLE DE VIE
-            </h1>
+    <section class="club" id="club">
+        <div class="overlay">
+
+            <div class="club__mainTitle">
+                <h1 class=" title title--h1">
+                    LE JUDO : PLUS QU’UN ART MARTIAL, UNE ECOLE DE VIE
+                </h1>
+            </div>
+
+            <div class="club__title">
+                <h2 class="title title--h2">
+                    Notre club et ses valeurs
+                </h2>
+            </div>
+
+            <p class="introduction">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, ullam?
+            </p>
+
+            <a href="javascript:getClubContent()" class="bouton bouton--secondary" id="boutonClub">Mon Club</a>
+
         </div>
+        <div class="club__content" id="content">
 
-        <div class="club__title">
-            <h2 class="title title--h2">
-                Notre club et ses valeurs
-            </h2>
+            <h3>Lorem ipsum dolor sit.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, provident?</p>
+
+            <h3>Lorem ipsum dolor sit.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, provident?</p>
+
+            <h3>Lorem ipsum dolor sit.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, provident?</p>
         </div>
+    </section>
 
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, ullam?
-        </p>
+    <div class="double-section">
 
-        <a href="#" class="bouton bouton--secondary">Mon Club</a>
+        <section class="horaire" id="horaire">
+            <div class="overlay">
+
+                <div class="title">
+                    <h2 class="title title--h2">Des entrainement adaptés pour tous </h2>
+                </div>
+
+                <p class="introduction">Le tsunami club propose des cours poour tous les ages, du plus petits au plus grands</p>
+
+                <a href="#" class="bouton bouton--secondary" id="boutonHoraire">Horaires</a>
+
+            </div>
+        </section>
+
+        <section class="discipline" id="discipline">
+            <div class="overlay">
+
+                <div class="title">
+                    <h2 class="title title--h2">Une pratique variée</h2>
+                </div>
+
+                <p class="introduction">Au-dela du judo, nous proposons plusieur disciplines associés afin d’etre au plus proche de vos objectifs</p>
+
+                <a href="#" class="bouton bouton--secondary" id="boutonDiscipline">Les disciplines</a>
+
+            </div>
+        </section>
+        
     </div>
-</section>
-<div class="double-section">
-    <section class="horaire">
-        <div class="overlay">
-            <div class="title">
-                <h2 class="title title--h2">Des entrainement adaptés pour tous </h2>
+
+    <div class="double-section">
+
+        <section class="evenement" id="evenement">
+            <div class="overlay">
+
+                <div class="title">
+                    <h2 class="title title--h2">Un club  de Judo dynamique</h2>
+                </div>
+
+                <p class="introduction">Que ça soit en terme de competition, de stage ou de formation, le tsunami club participe et organise de nombreux evenements</p>
+
+                <a href="#" class="bouton bouton--secondary"  id="boutonEvenement">Horaires</a>
+
             </div>
-            <p>Le tsunami club propose des cours poour tous les ages, du plus petits au plus grands</p>
-            <a href="#" class="bouton bouton--secondary">Horaires</a>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="overlay">
+
+                <div class="title">
+                    <h2 class="title title--h2">Un contact facilité et privilegié</h2>
+                </div>
+
+                <p class="introduction">Une question sur le judo ou notre club ? Contactez nous</p>
+
+                <a href="#" class="bouton bouton--secondary"  id="boutonContact">Les disciplines</a>
+
+            </div>
+        </section>
+
+    </div>
+    <section class="inscription">
+        <div class="overlay">
+
+            <div class="inscription__title">
+                <h2 class="title title--h1">
+                    Rejoignez nous Dés maintenant 
+                </h2>
+            </div>
+
+            <p class="introduction">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor
+            </p>
+
+            <a href="#" class="bouton bouton--primary">Inscription</a>
+
         </div>
     </section>
-    <section class="discipline">
-        <div class="overlay">
-            <div class="title">
-                <h2 class="title title--h2">Une pratique variée</h2>
+    {#
+    ?       ================================================
+    *               Messages flashs
+    ?       ================================================   
+    #}
+
+        {#!  confirm inscription ref: RegistrationController l.122#}
+        {% for message in app.flashes('confirm') %}
+            <div class="flash-notice">
+                {{ message }}
             </div>
-            <p>Au-dela du judo, nous proposons plusieur disciplines associés afin d’etre au plus proche de vos objectifs</p>
-            <a href="#" class="bouton bouton--secondary">Les disciplines</a>
-        </div>
-    </section>
-</div>
+        {% endfor %}
 
+    {#
+    ?       ================================================   
+    *               Fin Messages flashs 
+    ?       ================================================   
+    #}
+
+
+
+{% endblock %}
+{% block script %}
 {#
-?       ================================================
-*               Messages flashs
-?       ================================================   
+todo      javascript : 1. augmenter width 2. augmenter height 3. faire apparaitre le contenu
 #}
-
-    {#!  confirm inscription ref: RegistrationController l.122#}
-    {% for message in app.flashes('confirm') %}
-        <div class="flash-notice">
-            {{ message }}
-        </div>
-    {% endfor %}
-
-{#
-?       ================================================   
-*               Fin Messages flashs 
-?       ================================================   
-#}
-
-
-
 {% endblock %}

@@ -15,40 +15,112 @@ section{
     
     color:$font__color--primary;
 }
+
+p.introduction{
+    
+    padding-inline: 1.25rem;
+    text-align: center;
+    letter-spacing: 2
+    
+}
+
+
 .club{
     @include overlayImage("centure-noir.webp");
+    transition: all 1s linear;
     
     .overlay{
         @include overlay(hsla(0, 0%, 18%, 0.83));
-
-
         &:hover{
             @include overlay(transparent);
-            
         }
 
     }
-    p{
-        padding-inline: 1.25rem;
-        text-align: center;
+
+    
+    &__content{
+        display:none;
     }
+    
 }
+
 
 .double-section{
 
     @include flex-row-center;
-    flex-wrap: wrap;
+    
 
     section{
         width: max(50vw,320px);
 
         &.horaire{
-            @include overlayImage("centure-noir.webp");
+            @include overlayImage("cours-judo.webp");
+
+            .overlay{
+                @include overlay(hsla(41, 36%, 47%, 0.83));
+                &:hover{
+                    @include overlay(transparent);
+                }
+            }
         }
         &.discipline{
-            @include overlayImage("centure-noir.webp");
+            @include overlayImage("pratique-judo.webp");
+
+            .overlay{
+                @include overlay(hsla(0, 25%, 40%, 0.83));
+                &:hover{
+                    @include overlay(transparent);
+                }
+            }
+        }
+        &.evenement{
+            @include overlayImage("competition-judo.webp");
+
+            .overlay{
+                @include overlay(hsla(220, 2%, 35%, 0.83));
+                &:hover{
+                    @include overlay(transparent);
+                }
+            }
+        }
+        &.contact{
+            @include overlayImage("contact.webp");
+
+            .overlay{
+                @include overlay(hsla(0, 0%, 20%, 0.70));
+                &:hover{
+                    @include overlay(transparent);
+                }
+            }
+        }
+        
+    }
+
+
+    @media screen and (max-width:639px) {
+
+        @include flex-column-center;
+
+        section{
+            width: max(100vw,320px);
         }
     }
 }
+
+.inscription{
+    @include overlayImage("centure-blanche.webp");
+    
+    .overlay{
+        @include overlay(hsla(202, 16%, 45%, 0.70));
+        &:hover{
+            @include overlay(transparent);
+        }
+
+    }
+}
+
+
+
+
 
 
