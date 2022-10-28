@@ -1,9 +1,54 @@
 @import '_mixin.scss';
-@import 'set.scss';
+@import '_set.scss';
 
-.club{
-    color:$font__color--primary;
-    @include fullSizeImage("centure-noir.webp");
+
+.overlay{
     @include flex-column-around ;
-    height: 70vh;
+        height: 30rem;
+        transition: background-color 0.3s ease-in-out;
+    
+        :hover{
+            transition: background-color 0.3s ease-in-out;
+        }
 }
+section{
+    
+    color:$font__color--primary;
+}
+.club{
+    @include overlayImage("centure-noir.webp");
+    
+    .overlay{
+        @include overlay(hsla(0, 0%, 18%, 0.83));
+
+
+        &:hover{
+            @include overlay(transparent);
+            
+        }
+
+    }
+    p{
+        padding-inline: 1.25rem;
+        text-align: center;
+    }
+}
+
+.double-section{
+
+    @include flex-row-center;
+    flex-wrap: wrap;
+
+    section{
+        width: max(50vw,320px);
+
+        &.horaire{
+            @include overlayImage("centure-noir.webp");
+        }
+        &.discipline{
+            @include overlayImage("centure-noir.webp");
+        }
+    }
+}
+
+

@@ -1,3 +1,4 @@
+
 //? ======================================================
 //*                     Flex
 //? ======================================================
@@ -83,10 +84,22 @@ $font--title: Lato, sans-serif;
 
 
 //? ======================================================
-//*             image background Responsive
+//*             Overlay
 //? ======================================================
 
-
+@mixin overlayImage($image){
+    //! transition keyframe moche !
+    // background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("../images/"+$image);
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("../images/"+$image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@mixin overlay($colorOverlay){
+    //! transition keyframe moche !
+    // background: linear-gradient(transparent  0%, $colorOverlay $pourcent1,$colorOverlay 100%)  ;
+    background-color: $colorOverlay  ;
+}
 
 
 //? ======================================================
@@ -99,6 +112,11 @@ $font--title: Lato, sans-serif;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+
+//? ======================================================
+//*             Animation
+//? ======================================================
 
 
 

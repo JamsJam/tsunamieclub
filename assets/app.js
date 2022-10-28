@@ -7,7 +7,7 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/reset.scss';
-import './styles/set.scss';
+// import './styles/set.scss';
 import './styles/componant.scss';
 import './styles/base.scss';
 import './styles/landing.scss';
