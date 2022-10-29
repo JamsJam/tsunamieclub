@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RoleClub index{% endblock %}
+
+{% block body %}
+    <h1>RoleClub index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Competiteur</th>
+                <th>Arbitre</th>
+                <th>Commissaire</th>
+                <th>Professeur</th>
+                <th>Pole</th>
+                <th>Kata</th>
+                <th>Staf</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for role_club in role_clubs %}
+            <tr>
+                <td>{{ role_club.id }}</td>
+                <td>{{ role_club.competiteur ? 'Yes' : 'No' }}</td>
+                <td>{{ role_club.arbitre ? 'Yes' : 'No' }}</td>
+                <td>{{ role_club.commissaire ? 'Yes' : 'No' }}</td>
+                <td>{{ role_club.professeur ? 'Yes' : 'No' }}</td>
+                <td>{{ role_club.pole ? 'Yes' : 'No' }}</td>
+                <td>{{ role_club.kata ? 'Yes' : 'No' }}</td>
+                <td>{{ role_club.staf ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_role_club_show', {'id': role_club.id}) }}">show</a>
+                    <a href="{{ path('app_role_club_edit', {'id': role_club.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_role_club_new') }}">Create new</a>
+{% endblock %}

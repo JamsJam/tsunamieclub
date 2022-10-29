@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RoleClub{% endblock %}
+
+{% block body %}
+    <h1>RoleClub</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ role_club.id }}</td>
+            </tr>
+            <tr>
+                <th>Competiteur</th>
+                <td>{{ role_club.competiteur ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Arbitre</th>
+                <td>{{ role_club.arbitre ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Commissaire</th>
+                <td>{{ role_club.commissaire ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Professeur</th>
+                <td>{{ role_club.professeur ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Pole</th>
+                <td>{{ role_club.pole ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Kata</th>
+                <td>{{ role_club.kata ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Staf</th>
+                <td>{{ role_club.staf ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_role_club_index') }}">back to list</a>
+
+    <a href="{{ path('app_role_club_edit', {'id': role_club.id}) }}">edit</a>
+
+    {{ include('role_club/_delete_form.html.twig') }}
+{% endblock %}
