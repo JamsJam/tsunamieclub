@@ -7,12 +7,14 @@ use App\Service\ApiKey;
 use App\Entity\Adherant;
 use App\Service\MailJet;
 use App\Security\EmailVerifier;
+use App\Message\MailNotification;
 use App\Form\RegistrationFormType;
 use App\Repository\AdherantRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +38,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, AdherantRepository $ar,ApiKey $mjKey, VerifyEmailHelperInterface $helper,string $verifyEmailRouteName = "app_verify_email"): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, AdherantRepository $ar,ApiKey $mjKey, VerifyEmailHelperInterface $helper,string $verifyEmailRouteName = "app_verify_email", MessageBusInterface $bus): Response
     {
         $user = new Adherant();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -53,36 +55,63 @@ class RegistrationController extends AbstractController
 
             $ar->add($user, true);
             
-            //? =================================================
-            //*         *********** EMAIL ************
-            //? =================================================
+            // //? =================================================
+            // //*         *********** EMAIL ************
+            // //? =================================================
 
 
-            //! Recuperation de l'API MailJet
-            $key = $mjKey->getKey();
-            $secret_key = $mjKey->getSecretKey();
+            // //! Recuperation de l'API MailJet
+            // $key = $mjKey->getKey();
+            // $secret_key = $mjKey->getSecretKey();
 
             $signatureComponents = $helper->generateSignature(
                 $verifyEmailRouteName,
                 $user->getId(),
                 $user->getEmail()
             );
-            $email = new MailJet();
-            $email->send(
-                $key,
-                $secret_key,
-                //? Email  
-                $user->getEmail(), 
-                //? Nom
-                "NewUser", 
-                //? Subject 
-                "Bienvenue sur notre site",
-                //? Contenue
-                "<h1>Hi! Please confirm your email!</h1><p>Please confirm your email address by clicking the following link: <br><br><a href=\"{{var:signedUrl:\"\"}}\">Confirm my Email</a>.</p><p>Cheers!</p>",
-                //? Variable
-                [
-                    'signedUrl' => $signatureComponents->getSignedUrl(),
-                ]);
+            // $email = new MailJet();
+            // $email->send(
+            //     $key,
+            //     $secret_key,
+            //     //? Email  
+            //     $user->getEmail(), 
+            //     //? Nom
+            //     "NewUser", 
+            //     //? Subject 
+            //     "Bienvenue sur notre site",
+            //     //? Contenue
+            //     // templates\registration\confirmation_email.html.twig
+            //     "<h1>Hi! Please confirm your email!</h1><p>Please confirm your email address by clicking the following link: <br><br><a href=\"{{var:signedUrl:\"\"}}\">Confirm my Email</a>.</p><p>Cheers!</p>",
+            //     //? Variable
+            //     [
+            //         'signedUrl' => $signatureComponents->getSignedUrl(),
+            //     ]);
+            // //? =================================================
+            // //*         *********** FIN EMAIL ************
+            // //? =================================================
+            
+            //? =================================================
+            //*         *********** EMAIL ************
+            //? =================================================
+
+                $mail = new MailNotification(
+//todo                 1) Sujet
+                    "Bienvenue sur notre site",
+//todo                 2) destinataire
+                    $user->getEmail(),
+//todo                 3) expeditaire
+                    "contact@tsunami.fr",
+//todo                 4) template
+                    "registration/confirmation_email.html.twig",
+//todo                 5) parametres
+                    [
+                        'signedUrl' => $signatureComponents->getSignedUrl(),
+                        'expiresAtMessageKey' => $signatureComponents->getExpirationMessageKey(),
+                        'expiresAtMessageData' => $signatureComponents->getExpirationMessageData()
+                    ]
+);
+                    $bus->dispatch($mail);
+
             //? =================================================
             //*         *********** FIN EMAIL ************
             //? =================================================
