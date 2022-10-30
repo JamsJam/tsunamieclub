@@ -2,42 +2,7 @@
 @import '_mixin.scss';
 
 
-//? ===================================
-//*                 Bouton
-//? ===================================
 
-.bouton{
-    @include radius(10px);
-    @include bouton-size();
-    @include flex-row-center();
-    transition: 
-        color 0.4s ease-in-out,
-        background-color 0.4s ease-in-out;
-    font-size: 1.5rem;
-    
-    &--primary{
-        
-        @include bouton-colors(hsl(0, 0%, 89%), #262626ff, none);
-
-        &:hover{
-            @include bouton-colors( hsla(0, 0%, 15%, 0.6), #fcfcfcff, #fcfcfcff 2px solid)
-        }
-
-    }
-    &--secondary{
-        
-        @include bouton-colors( hsla(0, 0%, 15%, 0.4), #fcfcfcff, #fcfcfcff 2px solid);
-        &:hover{
-            @include bouton-colors(hsl(0, 0%, 70%), #262626ff, hsl(0, 0%, 70%) 2px solid)
-        }
-    }
-//  &--connexion{
-//      @include bouton-colors( hsla(0, 0%, 15%, 1), #fcfcfcff, none);
-//      &:hover{
-//          @include bouton-colors(hsl(0, 0%, 89%), #262626ff, none);
-//      }
-//  }
-}
 //? ===================================
 //*                 Header/nav
 //? ===================================
@@ -249,3 +214,65 @@
     min-height: 70vh;
 }
 
+//? ===================================
+//*                 Bouton
+//? ===================================
+
+.bouton{
+    @include radius(10px);
+    @include bouton-size();
+    @include flex-row-center();
+    transition: 
+        color 0.4s ease-in-out,
+        background-color 0.4s ease-in-out;
+    font-size: 1.5rem;
+    
+    &--primary{
+        
+        @include bouton-colors(hsl(0, 0%, 89%), #262626ff, none);
+
+        &:hover{
+            @include bouton-colors( hsla(0, 0%, 15%, 0.6), #fcfcfcff, #fcfcfcff 2px solid)
+        }
+
+    }
+    &--secondary{
+        
+        @include bouton-colors( hsla(0, 0%, 15%, 0.4), #fcfcfcff, #fcfcfcff 2px solid);
+        &:hover{
+            @include bouton-colors(hsl(0, 0%, 70%), #262626ff, hsl(0, 0%, 70%) 2px solid)
+        }
+    }
+//  &--connexion{
+//      @include bouton-colors( hsla(0, 0%, 15%, 1), #fcfcfcff, none);
+//      &:hover{
+//          @include bouton-colors(hsl(0, 0%, 89%), #262626ff, none);
+//      }
+//  }
+}
+
+
+//? ===================================
+//*                 Inputs
+//? ===================================
+
+.input{
+    @include flex-column-center-start;
+
+    input[type="text"],input[type="email"]{
+
+        height: 1.75rem;
+        width: 12.5rem;
+        @include radius(0.625rem);
+        border:none;
+        background-color: hsl(0, 0%, 80%);
+        transition: all 1s ease;
+
+        &:focus{
+            outline:none;
+            box-shadow: 0px 0px 6px 1px;
+        }
+
+
+    }
+}
