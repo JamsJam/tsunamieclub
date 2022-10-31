@@ -58,3 +58,23 @@
     </form>
 </div>
 {% endblock %}
+{% block script %}
+    
+    <script>
+        let inputPassword = document.querySelector('#inputPassword');
+        let toggleType = document.querySelector('#SeePassword');
+
+        function togglePass(){
+            
+            if(toggleType.checked){
+                inputPassword.setAttribute('type','text')
+                console.log('hello')
+            }else{
+                inputPassword.setAttribute('type','password')
+                
+            }
+        }
+
+        toggleType.addEventListener('change',togglePass)
+    </script>
+{% endblock %}
