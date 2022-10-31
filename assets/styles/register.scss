@@ -1,0 +1,85 @@
+@import '_mixin.scss';
+@import '_set.scss';
+
+
+.inscriptionForm{
+
+    @include flex-column-around;
+    @include overlayImage('judo-technique.webp');
+    color: hsl(0,0%,100%);
+    min-height: 80vh;
+    padding-block: 2rem;
+    
+    &__form{
+        @include flex-column-around-stretch;
+        min-height: 30rem;
+        width: clamp( 20rem,90vw,34rem);
+        padding-block: 1rem;
+        
+        
+    
+        &--row{
+            @include flex-row-between;
+            padding-inline: 1rem;
+            
+
+            .radio__container{
+                @include flex-column-around-start;
+
+                
+                .input--radio{
+                    width: 15rem;
+                    height: 2rem;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+                
+            }
+            
+        }
+        &--column{
+            @include flex-column-around-start;
+            padding-inline: 1rem;
+
+            .input{
+                
+
+                .input--text{
+                    width: clamp(15rem,80vw,31.5rem);
+                }
+            }
+        }
+
+        &>button{
+            margin-inline: auto;
+        }
+        &>.agreeTerms{
+            @include flex-column-center-start;
+            margin-block: 0.5rem;
+            padding-inline: 1rem;
+            
+            &>label{
+                order:-1
+            }
+        }
+        @media screen and (max-width:600px) {
+            &--row{
+                @include flex-column-center;
+                .input{
+                
+                    .input--text{
+                        width: clamp(15rem,80vw,31.5rem);
+                    }
+                }
+            }
+            &--column{
+                @include flex-column-center;
+                
+            }
+        }
+    }
+
+}
