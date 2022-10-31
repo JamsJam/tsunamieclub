@@ -64,11 +64,14 @@
         let inputPassword = document.querySelector('#inputPassword');
         let toggleType = document.querySelector('#SeePassword');
 
+{#
+?       ===========================================
+*                Affiche le mot de passe
+?       ===========================================
+#}
         function togglePass(){
-            
             if(toggleType.checked){
                 inputPassword.setAttribute('type','text')
-                console.log('hello')
             }else{
                 inputPassword.setAttribute('type','password')
                 

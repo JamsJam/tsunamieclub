@@ -13,6 +13,8 @@ import './styles/login.scss';
 import './styles/register.scss';
 import './styles/accueil.scss';
 import './styles/landing.scss';
+import './styles/resetPass.scss';
+
 // import './styles/_set.scss';
 
 
