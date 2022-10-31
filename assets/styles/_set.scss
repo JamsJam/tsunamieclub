@@ -6,7 +6,7 @@
 
 
 :root{
-    font-family: Roboto, serif;
+    font-family: Roboto, sans-serif;
     box-sizing: border-box;
     font-size: 16px;
     a{
@@ -39,6 +39,7 @@ $overlay1: #fefefe;
     font-family: $font--title;
     font-weight: 600;
     letter-spacing: 2px;
+    line-height: 1.6;
     padding:0.4rem;
 
     &--h1{
