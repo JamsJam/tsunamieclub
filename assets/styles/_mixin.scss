@@ -88,10 +88,20 @@
 $font--title: Lato, sans-serif;
 
 
+//? ===================================
+//*           COLOR      
+//? ===================================
+
+$font__color--primary: #fefefe;
 
 //? ======================================================
 //*             Overlay
 //? ======================================================
+
+
+
+$overlay1: #fefefe;
+
 
 @mixin overlayImage($image){
     //! transition keyframe moche !

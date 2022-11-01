@@ -1,55 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:ital,wght@0,700;1,400;1,500&display=swap');
-@import '_mixin.scss';
-//? ===================================
-//*           Initialisation      
-//? ===================================
 
 
-:root{
-    font-family: Roboto, serif;
-    box-sizing: border-box;
-    font-size: 16px;
-    a{
-        text-decoration: none
-    }
-}
-
-
-//? ===================================
-//*           COLOR      
-//? ===================================
-
-$font__color--primary: #fefefe;
-
-
-//? ===================================
-//*           OVERLAY
-//? ===================================
-
-$overlay1: #fefefe;
-
-
-
-
-//? ===================================
-//*           FONT      
-//? ===================================
-
-.title{
-    font-family: $font--title;
-    font-weight: 400;
-    letter-spacing: 2px;
-    // padding:1rem;
-
-    &--h1{
-        font-size: clamp(1.5rem, 1.2145rem + 1.4273vw, 2.5rem);
-        text-align: center;
-    }
-    &--h2{
-        font-size: clamp(1.25rem, 1.1786rem + 0.3568vw, 1.5rem);
-        text-align: center;
-    }
-}
 
 
 

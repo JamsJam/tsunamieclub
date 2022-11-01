@@ -12,6 +12,26 @@
                     LE JUDO : PLUS QU’UN ART MARTIAL, UNE ECOLE DE VIE
                 </h1>
             </div>
+                {#
+    ?       ================================================
+    *               Messages flashs
+    ?       ================================================   
+    #}
+
+        {#!  confirm inscription ref: RegistrationController l.122#}
+        {% for message in app.flashes('confirm') %}
+            <div class="flash-notice flash-notice--info">
+                {{ message }}
+                
+                {#? Votre email a été verifié. Veuillez finaliser votre incription dans  <a href="{{path('app_contact_new')}}">votre espace</a>. #}
+            </div>
+        {% endfor %}
+
+    {#
+    ?       ================================================   
+    *               Fin Messages flashs 
+    ?       ================================================   
+    #}
 
             <div class="club__title">
                 <h2 class="title title--h2">
@@ -119,24 +139,7 @@
 
         </div>
     </section>
-    {#
-    ?       ================================================
-    *               Messages flashs
-    ?       ================================================   
-    #}
 
-        {#!  confirm inscription ref: RegistrationController l.122#}
-        {% for message in app.flashes('confirm') %}
-            <div class="flash-notice">
-                {{ message }}
-            </div>
-        {% endfor %}
-
-    {#
-    ?       ================================================   
-    *               Fin Messages flashs 
-    ?       ================================================   
-    #}
 
 
 
