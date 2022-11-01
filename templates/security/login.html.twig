@@ -3,42 +3,81 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post" action="{{ path('app_login') }}">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<div class="login">
+    <form method="post" action="{{ path('app_login') }}" class="loginForm">
+    <h1 class="title title--h1">Se connecter</h1>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <div class="loginForm__group">
+            <label for="inputEmail" class="loginForm__group--label">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="loginForm__group--input" autocomplete="email" required autofocus>
         </div>
-    {% endif %}
+        
+        <div class="loginForm__group">
+            <label for="inputPassword" class="loginForm__group--label">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="loginForm__group--input" autocomplete="current-password" required>
+            <div class="loginForm__group--helpPassword">
+                <div>
+                    <input type="checkbox" id="SeePassword">
+                    <label for="SeePassword">Afficher le mot de passe</label>
+                </div>
+                <div>
+                <a href="{{path("app_forgot_password_request")}}" class='forgotPassword'>
+                        Mot de passe oublié ?
+                </a>
+                </div>
+            </div>
+        </div>
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
 
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        {#
+    ?        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+    ?        See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+        #}
+
+        <button class="bouton bouton--primary" type="submit">
+            connexion
+        </button>
+    </form>
+</div>
+{% endblock %}
+{% block script %}
     
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <script>
+        let inputPassword = document.querySelector('#inputPassword');
+        let toggleType = document.querySelector('#SeePassword');
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+{#
+?       ===========================================
+*                Affiche le mot de passe
+?       ===========================================
+#}
+        function togglePass(){
+            if(toggleType.checked){
+                inputPassword.setAttribute('type','text')
+            }else{
+                inputPassword.setAttribute('type','password')
+                
+            }
+        }
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        connexion
-    </button>
-</form>
+        toggleType.addEventListener('change',togglePass)
+    </script>
 {% endblock %}

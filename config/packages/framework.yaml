@@ -16,7 +16,7 @@ framework:
     #fragments: true
     php_errors:
         log: true
-    
+    #! desactive les messages d'erreur formulaire integrer, permet la personalisation
     form:
         legacy_error_messages: false
 

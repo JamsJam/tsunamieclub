@@ -1,0 +1,58 @@
+@import '_mixin.scss';
+@import '_set.scss';
+
+
+.login{
+    min-height: 70vh ;
+    @include flex-column-evenly;
+    @include overlayImage('Salut.webp');
+    background-position: 50% 68%!important;
+    padding-block: 3rem;
+
+    &Form{
+        @include flex-column-around;
+        min-height: 25rem;
+        width: clamp(16.75rem,82vw,30rem);
+        background-color: hsla(0,0%,100%,0.7);
+        padding: 1.5rem;
+
+        &__group{
+            @include flex-column-center-start;
+            
+            &--input{
+                width: 15rem;
+                height: 2.5rem;
+                @include radius(10px);
+                border: none;
+                padding-left: 1rem;
+            }
+            
+            &--label{
+                margin-block-end: 0.25rem;
+            }
+
+            &--helpPassword{
+                @include flex-column-center;
+                width: 15rem;
+
+                div:nth-child(1){
+
+                    align-self: start;
+
+                    label{
+                        font-size: 0.8rem;
+                    }
+                }
+                div:nth-child(2){
+
+                    align-self: end;
+                }
+                .forgotPassword{
+                    color: black;
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+    }
+}
