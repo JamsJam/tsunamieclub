@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Contact{% endblock %}
+{% block title %}{{parent()}} Formulaire de contact{% endblock %}
 
 {% block body %}
-    <h1>Create new Contact</h1>
+<div class="contactForm">
+    <h1 class="title title--h1">Formulaire de contact</h1>
+    <a href="{{ path('app_contact_index') }}" class="bouton bouton--retour">Retour</a>
 
     {{ include('contact/_form.html.twig') }}
 
-    <a href="{{ path('app_contact_index') }}">back to list</a>
+</div>
 {% endblock %}

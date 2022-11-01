@@ -17,7 +17,7 @@ class AdherantType extends AbstractType
         $builder
             ->add('nom',TextType::class)
             ->add('prenom',TextType::class)
-            ->add('email')
+            ->add('email',EmailType::class)
             // ->add('roles',ChoiceType::class)
             // ->add('password')
             // ->add('isVerified')

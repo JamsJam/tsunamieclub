@@ -36,6 +36,7 @@ class AdherantController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $adherantRepository->add($adherant, true);
+            
 
             return $this->redirectToRoute('app_adherant_index', [], Response::HTTP_SEE_OTHER);
         }

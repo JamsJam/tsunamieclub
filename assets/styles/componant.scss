@@ -294,7 +294,7 @@
 .input{
     @include flex-column-center-start;
     margin-block: 0.5rem;
-    
+
     .input--text{
         width: 15rem;
         height: 2rem;
@@ -309,7 +309,7 @@
 //? ===================================
 .flash-notice {
     
-    height: 5em;
+    min-height: 5em;
     padding-inline: 2rem;
     @include flex-row-center;
     @include radius(10px) ;
@@ -318,13 +318,13 @@
         background-color: hsl(185deg 86% 62% / 79%);
     }
     &--danger{
-        background-color: hsl(185deg 86% 62% / 79%);
+        background-color: rgba(228, 32, 32, 0.79);
     }
     &--warning{
-        background-color: hsl(185deg 86% 62% / 79%);
+        background-color: rgba(238, 154, 27, 0.79);
     }
     &--succes{
-        background-color: hsl(185deg 86% 62% / 79%);
+        background-color: rgba(75, 241, 103, 0.79);
     }
 }
 

@@ -57,7 +57,7 @@ class RegistrationFormType extends AbstractType
             ->add('dateDeNaissance',BirthdayType::class,[
                 "required" => false,
                 'widget' => 'single_text',
-                'format' => 'd/m/Y',
+                'format' => 'dd/mm/yyyy',
                 'html5' => false,
                 'input'=> 'datetime_immutable',
                 'invalid_message' => 'Veuillez entrer une date valide',

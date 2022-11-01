@@ -1,0 +1,38 @@
+@import '_mixin.scss';
+
+.contactForm{
+    @include flex-column-around;
+    @include overlayImage('judo-technique.webp');
+    color: hsl(0,0%,100%);
+    min-height: 80vh;
+    padding-block: 2rem;
+    
+    &__form{
+        @include flex-column-evenly;
+        min-height: 60vh;
+        // width: 60vw;
+        
+        
+        .contactForm__fields{
+            
+            @include flex-column-around;
+            
+
+            .fields{
+                @include flex-column-center-start;
+                margin-block: 0.5rem;
+
+                &--text{
+                    @include radius(10px);
+                    width: clamp(280px,70vw,800px);
+                    height: 50px;
+                    background-color: hsla(0, 0%, 80%);
+                    padding-left: 1.5rem;
+                    font-size: 1.5rem;
+                    margin-block: 0.5rem ;
+                }
+            }
+        }
+    }
+
+}

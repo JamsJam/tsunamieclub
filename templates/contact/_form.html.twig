@@ -1,9 +1,66 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'class': 'contactForm__form'}}) }}
 
-    {{ form_errors(form) }}
+    
+{# 
+?           ==================================================================
+todo         >>>>>>>>>>>>>> Gestion des messages d'erreurs
+?           ==================================================================
+#}
+    {% if 
+        ( not form.adresse.vars.valid and form.adresse.vars.submitted) or
+        ( not form.ville.vars.valid and form.ville.vars.submitted) or
+        ( not form.ville.vars.valid and form.ville.vars.submitted)
+    %}
 
-    {{ form_row(form..) }}
-    {{ form_row(form) }}
-    {{ form_row(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+        <div class="contactForm__errors">
+            {#? erreurs adresse #}
+            {% if not form.adresse.vars.valid and form.adresse.vars.submitted %}
+                <div class="flash-notice flash-notice--danger">
+                    {{  form_errors(form.adresse) }}
+                </div>
+            {% endif %}
+
+            {#? erreurs ville #}
+            {% if not form.ville.vars.valid and form.ville.vars.submitted %}
+                <div class="flash-notice flash-notice--danger">
+                    {{  form_errors(form.ville) }}
+                </div>
+            {% endif %}
+
+            {#? erreurs telephone #}
+            {% if not form.telephone.vars.valid and form.telephone.vars.submitted %}
+                <div class="flash-notice flash-notice--danger">
+                    {{  form_errors(form.telephone) }}
+                </div>
+            {% endif %}
+
+        </div>
+
+    {% endif %}
+{#
+?           ==================================================================
+todo                       Gestion des messages d'erreurs <<<<<<<<<<<<<<<
+?           ==================================================================
+#}
+    
+    
+    <div class="contactForm__fields">
+
+        <div class="fields">
+        {{ form_label(form.adresse) }}
+        {{ form_widget(form.adresse) }}
+        </div>
+
+        <div class="fields">
+        {{ form_label(form.ville) }}
+        {{ form_widget(form.ville) }}
+        </div>
+
+        <div class="fields">
+            {{ form_label(form.telephone) }}
+            {{ form_widget(form.telephone) }}
+        </div>
+
+    </div>
+        <button class="bouton bouton--primary">{{ button_label|default('Valider') }}</button>
 {{ form_end(form) }}

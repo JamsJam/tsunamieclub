@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ContactType extends AbstractType
@@ -16,26 +17,29 @@ class ContactType extends AbstractType
             ->add('adresse',TextType::class,[
                 "required" => false,
                 "attr" => [
-                    "class" => "input--inputText"
+                    "class" => "fields--text"
                 ],
                 "label_attr" => [
-                    "class"=> "input--label"]
+                    "class"=> "fields--label"]
             ])
             ->add('ville',TextType::class,[
                 "required" => false,
                 "attr" => [
-                    "class" => "input--inputText"
+                    "class" => "fields--text"
                 ],
                 "label_attr" => [
-                    "class"=> "input--label"]
+                    "class"=> "fields--label"]
             ])
-            ->add('telephone',TextType::class,[
+            ->add('telephone',TelType::class,[
                 "required" => false,
+                "trim"=> true,
                 "attr" => [
-                    "class" => "input--inputText"
+                    "class" => "fields--text"
                 ],
                 "label_attr" => [
-                    "class"=> "input--label"]
+                    "class"=> "input--label"
+                ],
+                
             ])
             // ->add('adherant')
         ;
