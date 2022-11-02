@@ -7,22 +7,23 @@
 
 <div class="userSpace">
     <h1 class="title title--h1"> Espace utilisateur</h1>
+    
     <div class="userSpace__container">
         
         <div class="userSpace__container--user">
-            <a href="" class="bouton bouton--primary"></a>
-            <a href="" class="bouton bouton--primary"></a>
-            <a href="" class="bouton bouton--primary"></a>
+            <a href="{{path('app_adherant_show',{"id" : app.user.id})}}" class="bouton bouton--primary">Mes informations</a>
+            <a href="#" class="bouton bouton--primary">Les evenements</a>
+            <a href="#" class="bouton bouton--primary">Les infos du club</a>
         </div>
 
         <div class="userSpace__container--admin">
-            <a href="" class="bouton bouton--primary"></a>
-            <a href="" class="bouton bouton--primary"></a>
+            <a href="{{path('app_adherant_index')}}" class="bouton bouton--primary">Gerer les Adherant</a>
+            <a href="#" class="bouton bouton--primary">Nouvel adherant</a>
         </div>
         
         <div class="userSpace__container--admin">
-            <a href="" class="bouton bouton--primary"></a>
-            <a href="" class="bouton bouton--primary"></a>
+            <a href="#" class="bouton bouton--primary">Créer un evenement</a>
+            <a href="#" class="bouton bouton--primary">Nouvelle information</a>
         </div>
 
     </div>

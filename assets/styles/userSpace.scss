@@ -1,0 +1,33 @@
+@import '_mixin.scss';
+
+.userSpace{
+    @include overlayImage('dojo.webp');
+    @include flex-column-around;
+    background-position: 50% 60%!important;
+    min-height: 80vh;
+    padding: 2rem;
+    color: white;
+
+
+    &__container{
+        
+        margin-block:2rem;
+        
+        
+        a{
+            margin: 1rem;
+        }
+        
+        &--user,&--admin{
+            @include flex-row-around;
+            flex-wrap: wrap;
+            margin: 1rem;
+
+
+            // @media screen and (max-width: ) {
+                
+            // }
+        }
+
+    }
+}
