@@ -16,7 +16,7 @@ class MailNotification
      * @param string $subject
      * @param string $to
      * @param string $from
-     * @param string $message
+     * @param string $template
      */
     public function __construct(string $subject, string $to, string $from, string $template, array $parameters)
     {
