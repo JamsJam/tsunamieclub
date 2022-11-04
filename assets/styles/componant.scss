@@ -8,11 +8,16 @@
 
 
 :root{
-    font-family: Roboto, serif;
-    box-sizing: border-box;
-    font-size: 16px;
-    a{
-        text-decoration: none
+    *{
+        font-family: Roboto, serif;
+        
+        box-sizing: border-box;
+        margin:0;
+        padding:0;
+        font-size: 16px;
+        a{
+            text-decoration: none
+        }
     }
 }
 
@@ -264,7 +269,7 @@
     
     &--primary{
         
-        @include bouton-colors(hsl(0, 0%, 89%), #262626ff, none);
+        @include bouton-colors(hsl(0, 0%, 100%), #262626ff, none);
 
         &:hover{
             @include bouton-colors( hsla(0, 0%, 15%, 0.6), #fcfcfcff, #fcfcfcff 2px solid)
@@ -328,7 +333,49 @@
     }
 }
 
+//? ===================================
+//*         Toggle switch
+//? ===================================
     
+
+.toggle{
+    appearance: none;
+    border: black 1px solid;
+    height: 30px;
+    width: 60px;
+    border-radius: 30px;
+    position:relative;
+    transition: all 0.2s ease;
+    
+
+    &--on{
+        background-color: hsl(121, 99%, 33%);
+
+        &::after{
+            content: "";
+            background-color: hsl(34deg, 45%, 83%);
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            position: absolute;
+            left: 1px;
+            top: 1px;
+        }
+    }
+    &--off{
+        background-color: hsl(9, 100%, 40%);
+        &::after{
+            content: "";
+            background-color: hsl(34deg, 45%, 83%);
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            position: absolute;
+            left: 29px;
+            top: 1px;
+        }
+    }
+}
     
 
 

@@ -187,9 +187,6 @@
             </div>
             {% endif %}
             <div>
-            <pre>
-                {{ dump(age) }}
-            </pre>
                 <p>
                 
 
@@ -288,12 +285,13 @@
 
         <div class="club__role">
             
+            <h2 class="title title--h2">Liste de diffusion</h2>
             
             <div class="club__role--item">
                 <p>Competition</p>
                 <input type="checkbox" class="toggle {%
                 
-                if (adherant.roleClub.competiteur)%}
+                if (adherant.roleClub.competiteur) %}
                     toggle--on
                 {% else %}
                     toggle--off
@@ -306,7 +304,7 @@
                 <p>Pole</p>
                 <input type="checkbox" name="" id="" class="toggle {%
                 
-                if (adherant.roleClub.pole)%}
+                if (adherant.roleClub.pole) %}
                     toggle--on
                 {% else %}
                     toggle--off
@@ -319,7 +317,7 @@
                 <p>Kata</p>
                 <input type="checkbox" name="" id="" class="toggle {%
                 
-                if (adherant.roleClub.kata)%}
+                if (adherant.roleClub.kata) %}
                     toggle--on
                 {% else %}
                     toggle--off
@@ -332,7 +330,7 @@
                 <p>Arbitre</p>
                 <input type="checkbox" name="" id="" class="toggle {%
                 
-                if (adherant.roleClub.arbitre)%}
+                if (adherant.roleClub.arbitre) %}
                     toggle--on
                 {% else %}
                     toggle--off
@@ -345,7 +343,7 @@
                 <p>Commissaire</p>
                 <input type="checkbox" name="" id="" class="toggle {%
                 
-                if (adherant.roleClub.commissaire)%}
+                if (adherant.roleClub.commissaire) %}
                     toggle--on
                 {% else %}
                     toggle--off
@@ -358,13 +356,14 @@
                 <p>Staf</p>
                 <input type="checkbox" name="" id="" class="toggle {%
                 
-                if (adherant.roleClub.staf)%}
+                if (adherant.roleClub.staf) %}
                     toggle--on
                 {% else %}
                     toggle--off
                 {% endif %}
                 ">
             </div>
+            <a href="#" class="bouton bouton--primary">Modifier</a>
         </div>
 
 
@@ -372,6 +371,15 @@
     <section class="userShow__administratif"></section>
 </div>
 
+<script>
+    let toggles = document.querySelectorAll('.toggle')
 
+    toggles.forEach(toggle => {
+        toggle.addEventListener('change',()=>{
+            toggle.classList.toggle('toggle--on');
+            toggle.classList.toggle('toggle--off');
+        })
+    });
+</script>
 
 {% endblock %}

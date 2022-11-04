@@ -6,6 +6,9 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
+import './styles/reset.scss';
+import './styles/base.scss';
+import './styles/componant.scss';
 import './styles/login.scss';
 import './styles/register.scss';
 import './styles/accueil.scss';
@@ -14,9 +17,6 @@ import './styles/resetPass.scss';
 import './styles/contact.scss';
 import './styles/userSpace.scss';
 import './styles/userShow.scss';
-import './styles/base.scss';
-import './styles/componant.scss';
-import './styles/reset.scss';
 
 // import './styles/_set.scss';
 
