@@ -2,9 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Grade;
+use App\Entity\Adherant;
 use App\Entity\RoleClub;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RoleClubType extends AbstractType
@@ -19,9 +22,15 @@ class RoleClubType extends AbstractType
             ->add('pole')
             ->add('kata')
             ->add('staf')
-            ->add('adherant')
-            ->add('grade')
-            ->add('enfant')
+            ->add('adherant',EntityType::class,[
+                'class' => Adherant::class,
+                'choice_label' => "email"
+            ])
+            ->add('grade',EntityType::class,[
+                'class' => Grade::class,
+                'choice_label'=>'grade'
+            ])
+            // ->add('enfant')
         ;
     }
 

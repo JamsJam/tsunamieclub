@@ -25,7 +25,7 @@ class Grade
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $centure;
+    private $ceinture;
 
     /**
      * @ORM\OneToOne(targetEntity=RoleClub::class, mappedBy="grade", cascade={"persist", "remove"})
@@ -49,14 +49,14 @@ class Grade
         return $this;
     }
 
-    public function getCenture(): ?string
+    public function getCeinture(): ?string
     {
-        return $this->centure;
+        return $this->ceinture;
     }
 
-    public function setCenture(string $centure): self
+    public function setCeinture(string $ceinture): self
     {
-        $this->centure = $centure;
+        $this->ceinture = $ceinture;
 
         return $this;
     }

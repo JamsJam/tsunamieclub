@@ -13,6 +13,7 @@ import './styles/landing.scss';
 import './styles/resetPass.scss';
 import './styles/contact.scss';
 import './styles/userSpace.scss';
+import './styles/userShow.scss';
 import './styles/base.scss';
 import './styles/componant.scss';
 import './styles/reset.scss';

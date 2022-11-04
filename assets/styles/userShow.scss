@@ -1,0 +1,78 @@
+@import '_mixin.scss';
+
+.userShow{
+    @include overlayImage('kata.webp');
+    min-height: 80vh;
+    color: hsl(0,0,100%);
+
+    @include flex-column-around;
+
+    &__id{
+        color: #2d2d2d;
+        @include flex-row-around;
+        @include radius(15px);
+        background-color: hsla(0, 0%, 100%, 0.8);
+        padding: 1rem;
+        
+        width: 1000px;
+        height: 333px;
+
+        h2{
+            margin-block-end:1rem; 
+        }
+        
+        .id__identity,
+        .id__contact,
+        .id__urgence
+        {
+            @include flex-column-around;
+            padding: 1rem;
+            width: 250px;
+            
+            
+            div{
+                margin-block: 1rem;
+                @include flex-row-around;
+                width: 250px;
+            }
+        }
+        
+        .bouton{
+            margin-block-start:1rem; 
+            width: 250px;
+        }
+    }
+
+    
+    &__club{
+        color: #2d2d2d;
+        @include flex-row-around;
+        width: 1000px;
+        
+        .club__categorie{
+            background-color: hsla(0, 0%, 100%, 0.8);
+            @include radius(15px);
+            padding:1rem;
+            width:400px;
+
+            
+        }
+        
+        .club__role{
+            background-color: hsla(0, 0%, 100%, 0.8);
+            @include radius(15px);
+            padding:1rem;
+            width:400px;
+            
+        }
+
+    }
+
+
+    &__administratif{
+        color: #2d2d2d;
+        @include flex-row-around;
+        @include radius(15px);
+        background-color: hsla(0, 0%, 100%, 0.8);
+    }
+}

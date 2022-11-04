@@ -3,7 +3,7 @@
 {% block title %}Adherant{% endblock %}
 
 {% block body %}
-    <h1>{{ adherant.nom }}</h1>
+    {# <h1>{{ adherant.nom }}</h1>
 
     <table class="table">
         <tbody>
@@ -54,5 +54,324 @@
 
     <a href="{{ path('app_adherant_edit', {'id': adherant.id}) }}">edit</a>
 
-    {{ include('adherant/_delete_form.html.twig') }}
+    {{ include('adherant/_delete_form.html.twig') }} #}
+{#
+!   ===================================================================================================
+?   ================================          Nouveau design           ================================
+!   ===================================================================================================
+#}
+
+
+<div class="userShow">
+    <h1 class="title title--h1">{{adherant.nom}} {{adherant.prenom}} {% if adherant.administratif %}{{adherant.administratif.licence}} {% endif %}</h1>
+    <section class="userShow__id">
+        <img src="" alt="" class="id__img">
+
+
+        <div class="id__identity">
+
+            <h2 class="title title--h2">Identité</h2>
+
+            <div>
+                <p>{{adherant.nom|upper}} </p>
+                <p>{{adherant.prenom|capitalize}}</p>
+            </div>
+
+            <div>
+                <p>
+                    {% set difference = date('now').diff(date(adherant.dateDeNaissance)) %}
+                    {% set age = difference.days %}
+                    {{age//365}}ans
+                </p>
+                <p>
+                    {% if adherant.sexe == 1 %}
+                        Homme
+                    {% else %}
+                        Femme
+                    {% endif %}
+                </p>
+            </div>
+
+            <div>
+                <p>{{adherant.dateDeNaissance|date("d/m/Y") }}</p>
+            </div>
+
+            <a href="#" class="bouton bouton--primary">Modifier</a>
+        </div>
+    
+
+        <div class="id__contact">
+        
+            <h2 class="title title--h2">Contact</h2>
+
+            <div>
+                <p>{{adherant.email}} </p>
+            </div>
+
+            {% if adherant.contact %}
+                
+                <div>
+                    <p>
+                        {{adherant.contact.telephone }}
+                    </p>
+                </div>
+
+                <div>
+                    <p>{{adherant.contact.adresse }} - {{adherant.contact.ville }}</p>
+                </div>
+
+                <a href="#" class="bouton bouton--primary">Modifier</a>
+            {% else %}
+                
+                <div>
+                    <p>Ajouter vos information de contact</p>
+                    
+                    <a href="#" class="bouton bouton--primary">Ajouter</a>
+                </div>
+            {% endif %}
+
+
+        </div>
+    
+        <div class="id__urgence">
+        
+            <h2 class="title title--h2">En cas d'urgence</h2>
+                {% if adherant.urgence %}
+                    
+                
+                    <div>
+                        <p>{{adherant.urgence.nom|upper}} </p>
+                        <p>{{adherant.urgence.prenom|capitalize}}</p>
+                    </div>
+
+                    <div>
+
+                        <p>
+                            {{adherant.urgence.telephone}}
+                        </p>
+                    </div>
+
+                    <a href="#" class="bouton bouton--primary">Modifier</a>
+                {% else %}
+                    
+                    <p>Ajouter vos information de contact</p>
+                    <a href="#" class="bouton bouton--primary">Ajouter</a>
+
+                {% endif %}
+
+        </div>
+    
+    </section>
+
+    <section class="userShow__club">
+
+
+        <div class="club__categorie">
+
+            <h2 class="title title--h2">Club</h2>
+
+            {% if adherant.roleClub %}
+                
+            <div>
+                <p>{{adherant.roleClub.grade.ceinture}}</p>
+            </div>
+            <div>
+                <p>{{adherant.roleClub.grade.grade}}</p>
+            </div>
+            {% else %}
+                <div>
+                <p>non renseigné</p>
+            </div>
+            <div>
+                <p>non renseigné</p>
+            </div>
+            {% endif %}
+            <div>
+            <pre>
+                {{ dump(age) }}
+            </pre>
+                <p>
+                
+
+                {#todo a partir de l'age, deduire la categorie d'age de l'adherant  #}
+                {#? Age = nombre de jours de la naissance a maintenant  #}
+                    {#? age = +30ans  #}
+                {% if  (30*365.25)-122 < age   %}
+                        Veterant
+                    
+                        {#? age = 20-30ans  #}
+
+                    {% elseif  (20*365.25)-122 < age and age < (30*365.25)-123 %}
+                        Senior
+                    
+                        {#? age = 19ans  #}
+
+                    {% elseif (19*365.25)-122 < age and age < (20*365.25)-123 %}
+                        Junior 3
+                    
+                        {#? age = 18ans  #}
+
+                    {% elseif (18*365.25)-122 < age and age < (19*365.25)-123 %}
+                        Junior 2
+                    
+                        {#? age =  17ans  #}
+
+                    {% elseif (17*365.25)-122 < age and age < (18*365.25)-123 %}
+                        Junior 1
+                    
+                        {#? age = 16ans  #}
+
+                    {% elseif (16*365.25)-122 < age and age < (17*365.25)-123 %}
+                        Cadet 3
+                    
+                        {#? age = 15ans  #}
+
+                    {% elseif (15*365.25)-122 < age and age < (16*365.25)-123 %}
+                        Cadet 2
+                    
+                        {#? age = 14ans  #}
+
+                    {% elseif (14*365.25)-122 < age and age < (15*365.25)-123 %}
+                        Cadet 1
+                    
+                        {#? age = 13ans  #}
+
+                    {% elseif (13*365.25)-122 < age and age < (14*365.25)-123 %}
+                        Minime 2
+                    
+                        {#? age = 12ans  #}
+
+                    {% elseif (12*365.25)-122 < age and age < (13*365.25)-123 %}
+                        Minime 1
+                    
+                        {#? age = 11ans  #}
+
+                    {% elseif (11*365.25)-122 < age and age < (12*365.25)-123 %}
+                        Benjamin 2
+                    
+                        {#? age =  10ans #}
+
+                    {% elseif (10*365.25)-122 < age and age < (11*365.25)-123 %}
+                        Benjamin 1
+                    
+                        {#? age = 9ans  #}
+
+                    {% elseif (9*365.25)-122 < age and age < (10*365.25)-123 %}
+                        Poussin 2
+                    
+                        {#? age = 8ans  #}
+
+                    {% elseif (8*365.25)-122 < age and age < (9*365.25)-123 %}
+                        Poussin 1
+                    
+                        {#? age =  7ans #}
+
+                    {% elseif (7*365.25)-122 < age and age < (8*365.25)-123 %}
+                        Prépoussin 2
+                    
+                        {#? age = 6ans  #}
+
+                    {% elseif (6*365.25)-122 < age and age < (7*365.25)-123 %}
+                        Prépoussin 1
+                    
+                        {#? age = -5ans  #}
+
+                    {% elseif  age < (6*365.25)-123 %}
+                        Baby-Judo
+
+                {% endif %}
+
+                </p>
+            </div>
+        </div>
+
+
+        <div class="club__role">
+            
+            
+            <div class="club__role--item">
+                <p>Competition</p>
+                <input type="checkbox" class="toggle {%
+                
+                if (adherant.roleClub.competiteur)%}
+                    toggle--on
+                {% else %}
+                    toggle--off
+                {% endif %}
+                ">
+            </div>
+            
+            
+            <div class="club__role--item">
+                <p>Pole</p>
+                <input type="checkbox" name="" id="" class="toggle {%
+                
+                if (adherant.roleClub.pole)%}
+                    toggle--on
+                {% else %}
+                    toggle--off
+                {% endif %}
+                ">
+            </div>
+            
+            
+            <div class="club__role--item">
+                <p>Kata</p>
+                <input type="checkbox" name="" id="" class="toggle {%
+                
+                if (adherant.roleClub.kata)%}
+                    toggle--on
+                {% else %}
+                    toggle--off
+                {% endif %}
+                ">
+            </div>
+            
+            
+            <div class="club__role--item">
+                <p>Arbitre</p>
+                <input type="checkbox" name="" id="" class="toggle {%
+                
+                if (adherant.roleClub.arbitre)%}
+                    toggle--on
+                {% else %}
+                    toggle--off
+                {% endif %}
+                ">
+            </div>
+            
+            
+            <div class="club__role--item">
+                <p>Commissaire</p>
+                <input type="checkbox" name="" id="" class="toggle {%
+                
+                if (adherant.roleClub.commissaire)%}
+                    toggle--on
+                {% else %}
+                    toggle--off
+                {% endif %}
+                ">
+            </div>
+            
+            
+            <div class="club__role--item">
+                <p>Staf</p>
+                <input type="checkbox" name="" id="" class="toggle {%
+                
+                if (adherant.roleClub.staf)%}
+                    toggle--on
+                {% else %}
+                    toggle--off
+                {% endif %}
+                ">
+            </div>
+        </div>
+
+
+    </section>  
+    <section class="userShow__administratif"></section>
+</div>
+
+
+
 {% endblock %}
