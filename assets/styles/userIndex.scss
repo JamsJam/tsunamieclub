@@ -1,0 +1,115 @@
+@import "_mixin.scss";
+
+.userIndex{
+    @include overlayImage('index4.webp');
+    background-attachment: fixed!important;
+    @include flex-column-around;
+    min-height: 80vh;
+    padding-block: 5rem;
+    
+    &__bouton{
+        width:clamp(300px,70vw,67.75rem);
+        @include flex-row-around;
+        flex-wrap: wrap;
+        
+        a{
+            margin-block: 1rem;
+
+        }
+    }
+    
+    &__search{
+        
+        margin-block: 2rem;
+
+        .search--input{
+            width: clamp(12rem, 45vw, 25rem);
+            height: 40px;
+            border-radius: 0 10px 10px 0;
+            padding-left: 1rem;
+
+        }
+        .search--btn{
+            border-radius: 10px 0 0 10px;
+            height: 40px;
+            width: 100px;
+
+        }
+    }
+    
+    &__filters{
+        @include flex-column-around;
+        @include radius(15px);
+        min-height: 400px;
+        padding-block: 1.5rem;
+        background-color: hsla(0,0%,100%,0.8);
+        margin-block: 2rem;
+
+        .filters{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(103px, 10vw));
+            padding-inline: 2rem;
+            gap: 1rem;
+            margin-block: 2rem;
+            width: clamp(300px, 70vw, 67.75rem);
+            justify-items: center;
+            justify-content: center;
+
+
+            
+            &__items{
+                @include flex-column-between;
+                height: 3.5rem;
+            }
+        }
+        
+        .filters__select{
+            @include flex-row-around;
+            margin-block: 2rem;
+            width:clamp(300px,70vw,67.75rem);
+        
+        }
+
+
+        a{
+            text-align: center;
+        }
+    }
+
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+        gap: 1rem;
+        width: clamp(300px,70vw,67.75rem);
+        justify-content: center;
+        justify-items: stretch;
+
+        .cell{
+            padding:0.7rem;
+            @include flex-column-around;
+            @include radius(10px);
+            border:none;
+            background-color: hsl(0, 0%, 80%);
+            height: 25rem;
+
+            &--1{
+                @include flex-row-between;
+                width: 100%;
+                padding-inline: 1.5rem;
+            }
+
+            &--2{
+                text-align: center;
+            }
+
+            .bouton {
+                width: 200px;
+            }
+        }
+    }
+
+    .title--h1{
+        color: #fff;
+        margin-block-end: 2rem
+    }
+}

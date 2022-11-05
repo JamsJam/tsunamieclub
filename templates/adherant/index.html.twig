@@ -3,43 +3,1094 @@
 {% block title %}Adherant index{% endblock %}
 
 {% block body %}
-    <h1>Adherant index</h1>
+<div class="userIndex">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>IsVerified</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>DateDeNaissance</th>
-                <th>Sexe</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for adherant in adherants %}
-            <tr>
-                <td>{{ adherant.email }}</td>
-                <td>{{ adherant.roles ? adherant.roles|json_encode : '' }}</td>
-                <td>{{ adherant.isVerified ? 'Yes' : 'No' }}</td>
-                <td>{{ adherant.nom }}</td>
-                <td>{{ adherant.prenom }}</td>
-                <td>{{ adherant.dateDeNaissance ? adherant.dateDeNaissance|date('Y-m-d') : '' }}</td>
-                <td>{{ adherant.sexe }}</td>
-                <td>
-                    <a href="{{ path('app_adherant_show', {'id': adherant.id}) }}">show</a>
-                    <a href="{{ path('app_adherant_edit', {'id': adherant.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <h1 class="title title--h1">Adherant index</h1>
+    <div class="userIndex__bouton">
+        <a href="" class="bouton bouton--primary">Retour</a>
+        <a href="" class="bouton bouton--primary">Nouvel Adherant</a>
+    </div>
 
-    <a href="{{ path('app_adherant_new') }}">Create new</a>
+    <form action="" class="userIndex__search">
+        <input type="submit" value="rechercher" class="search--btn">
+        <input type="text" name="" id="" class="search--input" placeholder="Rechercher nom,prenom,licence">
+    </form>
+
+    <div class="userIndex__filters">
+        <div class="filters">
+            
+            <div class="filters__items">
+                <p>Competiteur</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Kata</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Arbitre</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Commissaire</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Pole</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Professeur</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Impayer</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Non licencié</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Non validé</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+            
+            <div class="filters__items">
+                <p>Sans certificat</p>
+                <input type="checkbox" name="" id="" class="toggle toggle--off">
+            </div>
+
+        </div>
+        
+        <div class="filters__select">
+            
+            <div class="select__grade">
+                <select name="" id="">
+                    <option value="">Grade</option>
+                </select>
+            </div>
+
+            <div class="select__categorie">
+                <select name="" id="">
+                    <option value="">Catégorie</option>
+                    <option value="Vétérant">Vétérant</option>
+                    <option value="Sénior">Sénior</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Cadet">Cadet</option>
+                    <option value="Minime">Minime</option>
+                    <option value="Poussin">Poussin</option>
+                    <option value="Prépoussin">Prépoussin</option>
+                    <option value="BabyJudo">BabyJudo</option>
+                </select>
+            </div>
+
+        </div>
+
+        <a href="#" class="bouton bouton--primary">Filtrer</a>
+    </div>
+
+    <div class="userIndex__grid">
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+        
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    
+        <div class="cell">
+            <div class="cell--1">
+                <p>NOM</p>
+                <p>Prenom</p>
+            </div>
+            <div class="cell--1">
+                <p>Grade</p>
+                <p>Catégorie</p>
+            </div>
+            <div class="cell--2">nb°licence</div>
+            <a href="#" class="bouton bouton--primary">Afficher</a>
+        </div>
+
+
+    </div>
+</div>
 {% endblock %}

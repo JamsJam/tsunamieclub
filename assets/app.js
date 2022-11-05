@@ -17,6 +17,7 @@ import './styles/resetPass.scss';
 import './styles/contact.scss';
 import './styles/userSpace.scss';
 import './styles/userShow.scss';
+import './styles/userIndex.scss';
 
 // import './styles/_set.scss';
 

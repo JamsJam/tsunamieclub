@@ -347,34 +347,30 @@
     position:relative;
     transition: all 0.2s ease;
     
-
+    &::after{
+        content: "";
+        background-color: hsl(34deg, 45%, 83%);
+        height: 26px;
+        width: 26px;
+        border-radius: 50%;
+        position: absolute;
+        top: 1px;
+        transition: all 0.4s ease;
+    }
     &--on{
         background-color: hsl(121, 99%, 33%);
-
         &::after{
-            content: "";
-            background-color: hsl(34deg, 45%, 83%);
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            position: absolute;
-            left: 1px;
-            top: 1px;
+            left: 29px;
         }
     }
     &--off{
         background-color: hsl(9, 100%, 40%);
         &::after{
-            content: "";
-            background-color: hsl(34deg, 45%, 83%);
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            position: absolute;
-            left: 29px;
-            top: 1px;
+            left: 1px;
         }
     }
+
+   
 }
     
 
