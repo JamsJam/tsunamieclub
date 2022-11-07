@@ -8,4 +8,31 @@
     {{ include('mail/_form.html.twig') }}
 
     <a href="{{ path('app_mail_index') }}">back to list</a>
+
+{% endblock %}
+{% block script %}
+    
+    <script>
+        async function fetchAdherant() {
+            const requete = await fetch("{{path('app_json_adherant')}}",{
+                methode: 'GET'
+            })
+            // si la requete n'a pas aboutis....
+            if (!requete.ok) {
+                console.log('un probleme est survenu')
+            //si la requette a reussi
+            } else{
+                //je stock la reponse dans une variable
+                let donnees = await requete.json()
+                console.table(donnees)
+            }
+        }
+{#
+?       ===============================================================================================================================================
+todo        a faire : pour chaque element dans données faire des checkbox dans des divs contenant les element necessaire a une recherche par categorie
+?       ===============================================================================================================================================
+#}  
+
+        fetchAdherant()
+    </script>
 {% endblock %}

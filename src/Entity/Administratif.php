@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AdministratifRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=AdministratifRepository::class)
@@ -14,21 +15,25 @@ class Administratif
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"adherant-administratif"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"adherant-administratif"})
      */
     private $licence;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-administratif"})
      */
     private $certificatMedical;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-administratif"})
      */
     private $isPaid;
 

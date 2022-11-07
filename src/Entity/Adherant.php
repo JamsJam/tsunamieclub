@@ -10,7 +10,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Serializer\Annotation\Groups;
+  
 /**
  * @ORM\Entity(repositoryClass=AdherantRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
@@ -21,6 +22,7 @@ class Adherant implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"adherant"});
      */
     private $id;
 
@@ -31,37 +33,40 @@ class Adherant implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="json")
+     * 
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string");
+     * 
      */
     private $password;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"adherant"});
      */
     private $isVerified = false;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"adherant"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"adherant"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="date_immutable")
      * @Assert\Regex(
-     *     pattern = "^(?:(?:31(\/)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$",match=true,message="Veuillez respecter le format dd/mm/aaaa"
+     *     pattern = "^(?:(?:31(\/)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$",match=true,message="Veuillez respecter le format dd/mm/aaaa")
      * 
-     *     
-     * )
      */
     private $dateDeNaissance;
 
@@ -72,11 +77,14 @@ class Adherant implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"adherant"})
      */
     private $idRole;
+    
 
     /**
      * @ORM\OneToOne(targetEntity=Contact::class, mappedBy="adherant", cascade={"persist", "remove"})
+     * @Groups({"adherant-contact"})
      */
     private $contact;
 
@@ -87,11 +95,13 @@ class Adherant implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\OneToOne(targetEntity=RoleClub::class, mappedBy="adherant", cascade={"persist", "remove"})
+     * @Groups({"adherant-roleClub"})
      */
     private $roleClub;
 
     /**
      * @ORM\OneToOne(targetEntity=Administratif::class, mappedBy="adherant", cascade={"persist", "remove"})
+     * @Groups({"adherant-administratif"})
      */
     private $administratif;
 

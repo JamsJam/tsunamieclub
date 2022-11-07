@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RoleClubRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=RoleClubRepository::class)
@@ -14,41 +15,49 @@ class RoleClub
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"adherant-roleClub"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-roleClub"})
      */
     private $competiteur;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-roleClub"})
      */
     private $arbitre;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-roleClub"})
      */
     private $commissaire;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-roleClub"})
      */
     private $professeur;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-roleClub"})
      */
     private $pole;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-roleClub"})
      */
     private $kata;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"adherant-roleClub"})
      */
     private $staf;
 
@@ -59,6 +68,7 @@ class RoleClub
 
     /**
      * @ORM\OneToOne(targetEntity=Grade::class, inversedBy="roleClub", cascade={"persist", "remove"})
+     * @Groups({"adherant-roleClub"})
      */
     private $grade;
 

@@ -5,10 +5,13 @@ namespace App\Controller;
 use App\Entity\Mail;
 use App\Form\MailType;
 use App\Repository\MailRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\AdherantRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/mail")
@@ -35,6 +38,7 @@ class MailController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $mailRepository->add($mail, true);
 
             return $this->redirectToRoute('app_mail_index', [], Response::HTTP_SEE_OTHER);
@@ -86,5 +90,33 @@ class MailController extends AbstractController
         }
 
         return $this->redirectToRoute('app_mail_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+        /**
+     * @Route("/api/fetch/adherant", name="app_json_adherant")
+     */
+    public function adherantJson(SerializerInterface $serializer, AdherantRepository $adherantRepository): JsonResponse
+    {
+        
+        $adherant = $adherantRepository->findAll();
+        
+        
+        
+        $jsonContent = $serializer
+                                ->serialize(
+                                        $adherant,
+                                        'json',
+                                        [
+                                            'groups' => [
+                                                'adherant','adherant-roleClub','adherant-administratif','adherant-grade'
+                                                ]
+                                            ]
+                                            );
+        
+
+        return new JsonResponse($jsonContent, JsonResponse::HTTP_OK, [
+            'groups' => 'groups',
+        ], true) ;        
     }
 }

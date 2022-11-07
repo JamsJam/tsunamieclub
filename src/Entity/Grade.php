@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\GradeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=GradeRepository::class)
@@ -14,16 +15,20 @@ class Grade
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"adherant-grade"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"adherant-grade"})
      */
     private $grade;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"adherant-grade"})
+     * 
      */
     private $ceinture;
 
