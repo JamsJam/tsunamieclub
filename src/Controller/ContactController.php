@@ -36,6 +36,7 @@ class ContactController extends AbstractController
         //?  ===============================
         //!     Si un formulaire existe
         //?  ===============================
+        
         $testUser = $contactRepository->findBy(["adherant" => $this->getUser()->getId()]);
         if (count($testUser) != 0) {
             
@@ -64,7 +65,7 @@ class ContactController extends AbstractController
             $contact->setAdherant($this->getUser());
             $contactRepository->add($contact, true);
 
-            return $this->redirectToRoute('app_contact_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_urgence_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('contact/new.html.twig', [
@@ -95,7 +96,7 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $contactRepository->add($contact, true);
 
-            return $this->redirectToRoute('app_contact_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_urgence_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('contact/edit.html.twig', [

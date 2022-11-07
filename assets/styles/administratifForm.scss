@@ -1,0 +1,48 @@
+@import "_mixin.scss";
+
+.administratifForm{
+    @include overlayImage('judo-technique.webp');
+    @include flex-column-around;
+    min-height: 80vh;
+    padding-block: 4rem;
+
+    .title{
+        color: #ffffff;
+        margin-block-end: 2rem
+    }
+    
+    &__form{
+        @include flex-column-around;
+        @include radius(10px);
+        background-color: hsl(0,0,100%,0.7);
+        padding-block: 2rem ;
+        height: 30rem;
+        
+        .input__container{
+            
+            @include flex-row-around;
+            width: min(40rem,90vw);
+            
+            &--text,&--toggle{
+                @include flex-column-around-start;
+
+            }
+
+            &--text{
+                input{
+                    @include radius(0.675rem);
+                    height: 2.25rem;
+                    width: 12.5rem;
+                    background-color: hsl(0deg 0% 100%);
+                    border: none;
+                    padding-inline-start: 1rem;
+
+                    &:focus{
+                        outline: none;
+                        border: 2px solid navy;
+                    }
+                }
+            }
+        }
+    }
+}

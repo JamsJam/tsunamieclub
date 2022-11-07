@@ -11,3 +11,37 @@
 
     {{ include('role_club/_delete_form.html.twig') }}
 {% endblock %}
+{% block script %}
+    <script>
+        let toggleSwitchs = document.querySelectorAll(".toggle")
+
+        window.addEventListener('load',()=>{
+            if(toggleSwitch.checked){
+
+                    toggleSwitch.classList.remove("toggle--off");
+                    toggleSwitch.classList.add("toggle--on");
+                }
+                else{
+                    toggleSwitch.classList.remove("toggle--on");
+                    toggleSwitch.classList.add("toggle--off");
+
+                }
+        })
+
+        toggleSwitchs.forEach(toggleSwitch => {
+            toggleSwitch.addEventListener('click',() => {
+                console.log('hello')
+                if(toggleSwitch.checked){
+
+                    toggleSwitch.classList.remove("toggle--off");
+                    toggleSwitch.classList.add("toggle--on");
+                }
+                else{
+                    toggleSwitch.classList.remove("toggle--on");
+                    toggleSwitch.classList.add("toggle--off");
+
+                }
+            })
+        });
+    </script>
+{% endblock %}

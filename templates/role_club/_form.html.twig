@@ -1,4 +1,51 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr' : {'class' : 'role__form'}}) }}
+    {# <pre>
+        {{ dump(form.kata) }}
+    </pre> #}
+    <div class="roleForm">
+
+        <div class="roleForm__container">
+
+            <div class="form__toggle">
+                {{ form_label(form.competiteur) }}
+                {{ form_widget(form.competiteur) }}
+            </div>
+            <div class="form__toggle">
+                {{ form_label(form.pole) }}
+                {{ form_widget(form.pole) }}
+            </div>
+            <div class="form__toggle">
+                {{ form_label(form.kata) }}
+                {{ form_widget(form.kata) }}
+            </div>
+            <div class="form__toggle">
+                {{ form_label(form.professeur) }}
+                {{ form_widget(form.professeur) }}
+            </div>
+
+        </div>
+
+
+        <div class="roleForm__container">
+            <div class="form__toggle">
+                {{ form_label(form.commissaire) }}
+                {{ form_widget(form.commissaire) }}
+            </div>
+            <div class="form__toggle">
+                {{ form_label(form.arbitre) }}
+                {{ form_widget(form.arbitre) }}
+            </div>
+            <div class="form__toggle">
+                {{ form_label(form.staf) }}
+                {{ form_widget(form.staf) }}
+            </div>
+            <div class="wrapper">
+                {{ form_widget(form.grade) }}
+                
+            </div>
+
+        </div>
+
+    </div>
+    <button class="bouton bouton--primary">{{ button_label|default('Valider') }}</button>
 {{ form_end(form) }}

@@ -3,9 +3,37 @@
 {% block title %}New RoleClub{% endblock %}
 
 {% block body %}
-    <h1>Create new RoleClub</h1>
+    <div class="role">
+        <h1 class="title title--h1">Liste de difusion </h1>
+        <a href="{{ path('app_role_club_index') }}" class="bouton bouton--primary">Retour</a>
 
-    {{ include('role_club/_form.html.twig') }}
+        {{ include('role_club/_form.html.twig') }}
 
-    <a href="{{ path('app_role_club_index') }}">back to list</a>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        let toggleSwitchs = document.querySelectorAll(".toggle")
+        let select = document.querySelector('select')
+        let wrapper =  document.querySelector('.wrapper')
+
+        toggleSwitchs.forEach(toggleSwitch => {
+            toggleSwitch.addEventListener('click',() => {
+                if(toggleSwitch.checked){
+
+                    toggleSwitch.classList.remove("toggle--off");
+                    toggleSwitch.classList.add("toggle--on");
+                }
+                else{
+                    toggleSwitch.classList.remove("toggle--on");
+                    toggleSwitch.classList.add("toggle--off");
+
+                }
+            })
+        });
+
+        select.addEventListener('focus',()=>{
+            wrapper.querySelector('::after').style.rotate = '0deg'
+        })
+    </script>
 {% endblock %}

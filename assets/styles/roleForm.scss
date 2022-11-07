@@ -1,0 +1,44 @@
+@import '_mixin.scss';
+
+.role{
+    @include overlayImage('judo-technique.webp');
+    @include flex-column-around;
+    min-height: 80vh;
+    padding-block: 4rem ;
+    
+
+    a,
+    button
+    {
+        margin-block: 2rem;
+    }
+    
+    .title{
+        margin-block-end: 2rem;
+        color: #fff;
+    }
+    
+    
+    &__form{
+        @include flex-column-around;
+        @include radius(10px);
+        background-color: hsl(0,0,100%,0.7);
+        padding-block: 2rem ;
+        
+        .roleForm{
+            @include flex-row-around;
+            width: clamp(18.75rem,40vw,31.25rem);
+            
+            &__container{
+                
+                @include flex-column-around;
+                height: 20rem;
+
+
+                .form__toggle{
+                    @include flex-column-around;
+                }
+            }
+        }
+    }
+}

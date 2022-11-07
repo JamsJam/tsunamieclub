@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Urgence;
 use App\Form\UrgenceType;
+use App\Repository\AdherantRepository;
 use App\Repository\UrgenceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,8 +29,26 @@ class UrgenceController extends AbstractController
     /**
      * @Route("/new", name="app_urgence_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, UrgenceRepository $urgenceRepository): Response
+    public function new(Request $request, UrgenceRepository $urgenceRepository, AdherantRepository $adherantRepository): Response
     {
+
+        //?  ===============================
+        //!     Si un formulaire existe
+        //?  ===============================
+        $testUser = $urgenceRepository->findBy(["adherant" => $this->getUser()->getId()]);
+        if (count($testUser) != 0) {
+            
+            $urgenceId = $testUser[0]->getId();
+
+            return $this->redirectToRoute('app_urgence_edit', [
+                "id" => $urgenceId
+            ], Response::HTTP_SEE_OTHER);
+        }
+
+        //?  ===============================
+        //!                ===
+        //?  ===============================
+
         $urgence = new Urgence();
         $form = $this->createForm(UrgenceType::class, $urgence);
         $form->handleRequest($request);
@@ -37,6 +56,10 @@ class UrgenceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $urgenceRepository->add($urgence, true);
 
+            $adherant = $adherantRepository->findOneBy(["id"=> $this->getUser()->getId()]);
+            $adherant->setUrgence($urgence);
+            $adherantRepository->add($adherant,true);
+            
             return $this->redirectToRoute('app_urgence_index', [], Response::HTTP_SEE_OTHER);
         }
 

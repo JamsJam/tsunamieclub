@@ -102,20 +102,20 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'options' => [
                     'attr' => [
-                        'autocomplete' => 'new-password',
+                        'autocomplete   ' => 'new-password',
                         'invalid_message' => 'The password fields must match.',
-                        'required' => true,
-                        'class' => 'password-field input--text'
+                        'required'        => true,
+                        'class'           => 'password-field input--text'
                     ],
-                    "row_attr" => [
+                    "row_attr"  => [
                         "class" => "input"
                     ],
                 ],
                 'first_options'  => [
-                    'label' => 'Password'
+                    'label'      => 'Password'
                 ],
                 'second_options' => [
-                    'label' => 'Repeat Password'
+                    'label'      => 'Repeat Password'
                 ],
                 
                 'constraints' => [

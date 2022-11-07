@@ -30,6 +30,15 @@ class RoleClubController extends AbstractController
      */
     public function new(Request $request, RoleClubRepository $roleClubRepository): Response
     {
+        $user = $this -> getUser();
+        $allRole = $roleClubRepository->findBy(['adherant' => $user->getId()]);
+        // dd($allRole);
+        if ($allRole !== []) {
+            
+            return $this->redirectToRoute('app_role_club_edit', [
+                "id" => $allRole[0]->getId()
+            ], Response::HTTP_SEE_OTHER);
+        }
         $roleClub = new RoleClub();
         $form = $this->createForm(RoleClubType::class, $roleClub);
         $form->handleRequest($request);
@@ -57,7 +66,7 @@ class RoleClubController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_role_club_edit", methods={"GET", "POST"})
+     * @Route("/edit/{id}", name="app_role_club_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, RoleClub $roleClub, RoleClubRepository $roleClubRepository): Response
     {

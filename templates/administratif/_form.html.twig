@@ -1,4 +1,26 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {attr : {'class' : "administratifForm__form"}}) }}
+    <div class="input__container">
+
+        <div class="input__container--text">
+
+            {{ form_label(form.licence) }}
+            {{ form_widget(form.licence) }}
+        </div>
+
+    </div>
+
+    <div class="input__container">
+
+        <div class="input__container--toggle">
+            {{ form_label(form.certificatMedical) }}
+            {{ form_widget(form.certificatMedical) }}
+        </div>
+
+        <div class="input__container--toggle">
+            {{ form_label(form.isPaid) }}
+            {{ form_widget(form.isPaid) }}
+        </div>
+
+    </div>
+    <button class="bouton bouton--primary">{{ button_label|default('Valider') }}</button>
 {{ form_end(form) }}

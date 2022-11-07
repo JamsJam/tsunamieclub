@@ -1,4 +1,20 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'contactForm__form'}}) }}
+    <div class="contactForm__fields">
+
+        {# {{ form_widget(form) }} #}
+        <div class="fields">
+            {{form_label(form.nom)}}
+            {{form_widget(form.nom)}}
+        </div>
+        <div class="fields">
+            {{form_label(form.prenom)}}
+            {{form_widget(form.prenom)}}
+        </div>
+        <div class="fields">
+            {{form_label(form.telephone)}}
+            {{form_widget(form.telephone)}}
+        </div>
+    </div>
+        <button class="bouton bouton--primary">{{ button_label|default('Valider') }}</button>
 {{ form_end(form) }}
+    

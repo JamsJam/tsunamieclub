@@ -266,6 +266,10 @@
         color 0.4s ease-in-out,
         background-color 0.4s ease-in-out;
     font-size: 1.5rem;
+
+    &:hover{
+        cursor:pointer;
+    }
     
     &--primary{
         
@@ -332,6 +336,65 @@
         background-color: rgba(75, 241, 103, 0.79);
     }
 }
+
+//? ===================================
+//*                 Select
+//? ===================================
+
+
+.wrapper{
+    width: 10rem;
+    height: 3rem;
+    background-color: rgba(248, 248, 248, 0.87);
+    position: relative;
+    @include radius(10px);
+    
+    &::after{
+        content: "";
+        width: 0.8em;
+        height: 0.5em;
+        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        background-color: black;
+        position: absolute;
+        right: 9px;
+        top: 18px;
+        rotate: 90deg;
+        transition: rotate 0.5s ease;
+        
+    }
+    &:focus-within::after{
+            rotate: 0deg;
+    }
+
+    select{
+        @include radius(10px);
+        border: none;
+        border: 2px rgba(78, 78, 78, 0.884) solid;
+        appearance: none;
+        position: absolute;
+        background: none;
+        left: 0;
+        top: 0;
+        padding-inline: 0.85rem;
+        width: 10rem;
+        height: 3rem;
+        z-index: 1;
+        box-shadow: 0 0 0 0 ;
+        transition: box-shadow 0.5s ease;
+        &:focus-visible{
+            outline: none;
+            box-shadow: 0 0 10px 2px ;
+
+        }
+
+        &:hover{
+            cursor:pointer;
+        }
+    }
+}
+
+
+
 
 //? ===================================
 //*         Toggle switch

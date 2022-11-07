@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Adherant;
 use App\Form\AdherantType;
 use App\Repository\AdherantRepository;
+use App\Repository\GradeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,11 @@ class AdherantController extends AbstractController
     /**
      * @Route("/", name="app_adherant_index", methods={"GET"})
      */
-    public function index(AdherantRepository $adherantRepository): Response
+    public function index(AdherantRepository $adherantRepository, GradeRepository $gradeRepository): Response
     {
         return $this->render('adherant/index.html.twig', [
             'adherants' => $adherantRepository->findAll(),
+            'grades' => $gradeRepository->findAll(),
         ]);
     }
 

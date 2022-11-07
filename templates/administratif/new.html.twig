@@ -3,9 +3,33 @@
 {% block title %}New Administratif{% endblock %}
 
 {% block body %}
-    <h1>Create new Administratif</h1>
+    <div class="administratifForm">
+        <h1 class="title title--h1" >Administratif</h1>
 
-    {{ include('administratif/_form.html.twig') }}
+        <a href="{{ path('app_administratif_index') }}" class="bouton bouton--retour">Retour</a>
 
-    <a href="{{ path('app_administratif_index') }}">back to list</a>
+        {{ include('administratif/_form.html.twig') }}
+
+    </div>
+    
+{% endblock %}
+{% block script %}
+    <script>
+        let toggleSwitchs = document.querySelectorAll(".toggle")
+        
+        toggleSwitchs.forEach(toggleSwitch => {
+            toggleSwitch.addEventListener('click',() => {
+            if(toggleSwitch.checked){
+
+                toggleSwitch.classList.remove("toggle--off");
+                toggleSwitch.classList.add("toggle--on");
+            }
+            else{
+                toggleSwitch.classList.remove("toggle--on");
+                toggleSwitch.classList.add("toggle--off");
+
+            }
+        })
+    });
+    </script>
 {% endblock %}

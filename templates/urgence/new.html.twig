@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Urgence{% endblock %}
+{% block title %}{{parent()}} Personne à contacter en cas d'urgence{% endblock %}
 
 {% block body %}
-    <h1>Create new Urgence</h1>
+<div class="contactForm">
+    <h1 class='title title--h1'>Personne à contacter en cas d'urgence</h1>
 
+    <a href="{{ path('app_urgence_index') }}" class="bouton bouton--retour">Retour</a>
     {{ include('urgence/_form.html.twig') }}
 
-    <a href="{{ path('app_urgence_index') }}">back to list</a>
+</div>
 {% endblock %}

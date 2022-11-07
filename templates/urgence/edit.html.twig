@@ -3,11 +3,11 @@
 {% block title %}Edit Urgence{% endblock %}
 
 {% block body %}
-    <h1>Edit Urgence</h1>
+    <h1>Personne à contacter en cas d'urgencce</h1>
 
-    {{ include('urgence/_form.html.twig', {'button_label': 'Update'}) }}
+    <a href="{{ path('app_urgence_index') }}">Retour</a>
+    {{ include('urgence/_form.html.twig', {'button_label': 'Modfier'}) }}
 
-    <a href="{{ path('app_urgence_index') }}">back to list</a>
 
     {{ include('urgence/_delete_form.html.twig') }}
 {% endblock %}
