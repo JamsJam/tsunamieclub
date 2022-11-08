@@ -3,36 +3,134 @@
 {% block title %}New Mail{% endblock %}
 
 {% block body %}
-    <h1>Create new Mail</h1>
+<div class="mailForm">
+    <h1 class="title title--h1">Nouvelle info</h1>
+
 
     {{ include('mail/_form.html.twig') }}
 
-    <a href="{{ path('app_mail_index') }}">back to list</a>
+    
+
+    <a href="{{ path('app_mail_index') }}">Retour</a>
+
+
+
+</div>
 
 {% endblock %}
 {% block script %}
-    
-    <script>
-        async function fetchAdherant() {
-            const requete = await fetch("{{path('app_json_adherant')}}",{
-                methode: 'GET'
-            })
-            // si la requete n'a pas aboutis....
-            if (!requete.ok) {
-                console.log('un probleme est survenu')
-            //si la requette a reussi
-            } else{
-                //je stock la reponse dans une variable
-                let donnees = await requete.json()
-                console.table(donnees)
-            }
-        }
-{#
-?       ===============================================================================================================================================
-todo        a faire : pour chaque element dans données faire des checkbox dans des divs contenant les element necessaire a une recherche par categorie
-?       ===============================================================================================================================================
-#}  
 
-        fetchAdherant()
-    </script>
+
+    <script>
+        filterToggle = document.querySelector('#getFilters');
+        filterContainer = document.querySelector('.filter__container');
+        filterToggle.addEventListener('click',()=>{
+            filterContainer.classList.toggle('container--off')
+            filterContainer.classList.toggle('container--on')
+           
+       })
+    {#
+        ?       ===============================================================================================================================================
+        todo        a faire : pour chaque element dans données faire des checkboxs dans des divs contenant les element necessaire a un tri entre les adherants
+        ?       ===============================================================================================================================================
+    #} 
+
+
+                let container = document.querySelector(".card-container")
+    {#
+    ?       =====================================================================
+    !       =================  Etape 1 : requete Ajax -> fetch  =================
+    ?       =====================================================================
+    #}
+                async function fetchAdherant() {
+                    //recuperation des donnée sur une route contenant les information au format JSON
+                    const requete = await fetch("{{path('app_json_adherant')}}",{
+                        methode: 'GET'
+                    })
+                    // si la requete n'a pas aboutis....
+                    if (!requete.ok) {
+                        alert('un probleme est survenu')
+                        console.error(requete.status)
+                    //si la requette a reussi
+                    } else{
+                        //je stock la reponse dans une variable
+                        let donnees = await requete.json()
+                            console.log(donnees)
+                        
+    {#
+        ?       =====================================================================
+        !       ================ Etape 2 : creation de chaque input  ================
+        ?       =====================================================================
+    #} 
+                    //pour chaque element (donnees contient tout les Adherants contenue en base de donnée )
+                    donnees.forEach(adherant => {
+
+                        
+                        //Creation d'une div
+                        // let checkbox = document.createElement('div')
+                        let card = document.createElement('a')
+
+                        //definition d'une class pour cette element
+                        card.setAttribute('class','fetchAdherant')
+                        card.setAttribute('id',adherant.id)
+                        card.setAttribute('href','#')
+                        
+                        //insertion d'HTML dans la div créé au dessus
+                        card.innerHTML = "<img src=\"\" alt=\"\" class=\"pp\"><div class=\"fetchAdherant__item\"><p class=\"fetchAdherant__item--nom\">"+adherant.nom+"</p><p class=\"fetchAdherant__item--prenom\">"+adherant.prenom+"</p></div><div class=\"fetchAdherant__item\"><p class=\"fetchAdherant__item--licence\">"+adherant.licence+"</p></div>";
+                        
+                        //Insertion des informations de l'adherant dans les proprieter de la div (sera utile pour le filtre des adherants)
+                        card.setAttribute('nom',adherant.nom)
+                        card.setAttribute('prenom',adherant.prenom)
+                                                        {#! Condition ternaire: (si condition) ? (alors) : (sinon) #}
+                        card.setAttribute('competition',adherant.roleClub ? adherant.roleClub.competiteur : "null")
+                        card.setAttribute('kata',adherant.roleClub ? adherant.roleClub.kata : 'null' )
+                        card.setAttribute('arbitre',adherant.roleClub ? adherant.roleClub.arbitre : 'null' )
+                        card.setAttribute('pole',adherant.roleClub ? adherant.roleClub.pole : 'null' )
+                        card.setAttribute('professeur',adherant.roleClub ? adherant.roleClub.professeur : 'null' )
+                        card.setAttribute('staf',adherant.roleClub ? adherant.roleClub.staf : 'null' )
+                        card.setAttribute('commissaire',adherant.roleClub ? adherant.roleClub.comissaire : 'null' )
+
+                        //Insertion de la div dans le code HTML en tant que dernier enfant de 'container'
+                        container.append(card)
+                        
+                    });
+
+    {#
+        ?       =====================================================================
+        !       =============== Etape 3 : liaison avec le formulaire  ===============
+        ?       =====================================================================
+    #}
+
+                    //selection de toute les divs créer
+                    let cards = document.querySelectorAll('.fetchAdherant')
+
+
+
+                    cards.forEach(card => {
+                        //Si une des checkboxs est cochée ou décochée...
+                        card.addEventListener('click',(e)=>{
+                            e.preventDefault()
+                            //recuperation de l'id de la checkbox concerné
+                            let cardId = e.target.getAttribute('id')
+                            card.classList.toggle('fetchAdherant--active')
+                            //selection de l'input du formulaire correspondant a cet ID
+                            let inputform = document.querySelector('#mail_destinataire_'+cardId)
+                            //Cocher ou decocher l'la checkbox du forme selon l'etat de la checkbox creer
+                            if( !inputform.checked){
+                                inputform.setAttribute('checked','checked')
+                                
+                            }
+                            else{
+                                inputform.removeAttribute('checked')
+                            }
+                        })
+                        document.querySelector('.fetchAdherant').click()
+                    });
+                };
+            };
+            fetchAdherant()
+
+            
+        </script>
+        
 {% endblock %}

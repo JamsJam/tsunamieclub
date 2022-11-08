@@ -1,4 +1,61 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
+{{ form_start(form, {attr : {'class' : "mailForm__form"}}) }}
+<div class="mailForm__form--input">
+    {{ form_label(form.sujet) }}
+    {{ form_widget(form.sujet) }}
+</div>
+<div class="mailForm__form--input">
+    {{ form_label(form.message) }}
+    {{ form_widget(form.message) }}
+</div>
+<div class="filter">
+    <button type='button' id="getFilters">Filtrer</button>
+    <div class="filter__container container--off">
+        <div class="filter__filter">
+            <p class="title title--h2">Competition</p>
+            <div>
+                <button class="filter__filter--select select--off" type='button'>Selectionner</button>
+            </div>
+        </div>
+        <div class="filter__filter">
+            <p class="title title--h2">Pole</p>
+            <div>
+                <button class="filter__filter--select select--off" type='button'>Selectionner</button>
+            </div>
+        </div>
+        <div class="filter__filter">
+            <p class="title title--h2">Kata</p>
+            <div>
+                <button class="filter__filter--select select--off" type='button'>Selectionner</button>
+            </div>
+        </div>
+        <div class="filter__filter">
+            <p class="title title--h2">Artibre</p>
+            <div>
+                <button class="filter__filter--select select--off" type='button'>Selectionner</button>
+            </div>
+        </div>
+        <div class="filter__filter">
+            <p class="title title--h2">Commissaire</p>
+            <div>
+                <button class="filter__filter--select select--off" type='button'>Selectionner</button>
+            </div>
+        </div>
+        <div class="filter__filter">
+            <p class="title title--h2">Staf</p>
+            <div>
+                <button class="filter__filter--select select--off" type='button'>Selectionner</button>
+            </div>
+        </div>
+        <div class="filter__filter">
+            <p class="title title--h2">Professeur</p>
+            <div>
+                <button class="filter__filter--select select--off" type='button'>Selectionner</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="card-container"></div>
+    {{ form_widget(form.destinataire) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
