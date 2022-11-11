@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Mail;
 use App\Form\MailType;
+use App\Message\MailNotification;
 use App\Repository\MailRepository;
 use App\Repository\AdherantRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -31,15 +33,48 @@ class MailController extends AbstractController
     /**
      * @Route("/new", name="app_mail_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, MailRepository $mailRepository): Response
+    public function new(Request $request, MailRepository $mailRepository, MessageBusInterface $bus): Response
     {
         $mail = new Mail();
         $form = $this->createForm(MailType::class, $mail);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // dd($mail->getMessage());
+            //initialisation tableau des destinataire
+            $toAddresses = [];
+
+            foreach ($mail->getDestinataire() as $destinataire) {
+                $destiMail = $destinataire->getEmail();
+                
             
-            $mailRepository->add($mail, true);
+//? =================================================
+//*         *********** EMAIL ************
+//? =================================================
+                $content = $mail->getMessage();
+            $email = new MailNotification(
+//todo                 1) Sujet
+            $mail->getSujet(),
+//todo                 2) destinataire
+                        $destiMail,
+//todo                 3) expeditaire
+            "contact@tsunami.fr",
+//todo                 4) template
+            "mail/template_mail.html.twig",
+//todo                 5) parametres
+                [
+                    'content' => $content,
+                    'adherant'=> $destinataire
+                ]
+            );
+                        $bus->dispatch($email);
+    
+//? =================================================
+//*         *********** FIN EMAIL ************
+//? =================================================
+            }
+        
+        $mailRepository->add($mail, true);
 
             return $this->redirectToRoute('app_mail_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -69,6 +104,7 @@ class MailController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $mailRepository->add($mail, true);
 
             return $this->redirectToRoute('app_mail_index', [], Response::HTTP_SEE_OTHER);
@@ -112,7 +148,7 @@ class MailController extends AbstractController
                                                 'adherant','adherant-roleClub','adherant-administratif','adherant-grade'
                                                 ]
                                             ]
-                                            );
+                                        );
         
 
         return new JsonResponse($jsonContent, JsonResponse::HTTP_OK, [

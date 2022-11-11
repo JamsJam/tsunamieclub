@@ -42,7 +42,7 @@ class MailNotificationHandler implements MessageHandlerInterface
             // $this->mailer->send($email);
             return true;
         } catch (TransportExceptionInterface $e) {
-            // dd($e);
+            dd($e);
             return false;
         }
     }

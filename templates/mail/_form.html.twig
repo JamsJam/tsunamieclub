@@ -3,12 +3,25 @@
     {{ form_label(form.sujet) }}
     {{ form_widget(form.sujet) }}
 </div>
+
 <div class="mailForm__form--input">
     {{ form_label(form.message) }}
     {{ form_widget(form.message) }}
 </div>
+
+<div class="mailForm__search search">
+
+    <div class="search__input">
+        <button type="button"> Recherche</button>
+        <input type="search" name="" id="">
+    </div>
+
+    <div class="search__filter">
+        <button type='button' id="getChecked" class="btn--filter button--close">Selection rapide</button>
+        <button type='button' id="getFilters" class="btn--filter button--close">Filtrer</button>
+    </div>
+</div>
 <div class="filter">
-    <button type='button' id="getFilters">Filtrer</button>
     <div class="filter__container container--off">
         <div class="filter__filter">
             <p class="title title--h2">Competition</p>
@@ -49,58 +62,77 @@
         <div class="filter__filter">
             <p class="title title--h2">Professeur</p>
             <div>
-                <button class="filter__filter--select select--off" type='button' filter='prefesseur' >Selectionner</button>
-            </div>
-        </div>
-    </div>
-    <button type='button' id="getChecked">Selection rapide</button>
-    <div class="quickSelect_container container--off">
-        <div class="quickSelect">
-            <p class="title title--h2">Competition</p>
-            <div>
-                <button class="quickSelect_btn--select select--off" type='button' filter='competition' >Selectionner</button>
-            </div>
-        </div>
-        <div class="quickSelect">
-            <p class="title title--h2">Pole</p>
-            <div>
-                <button class="quickSelect_btn--select select--off" type='button' filter='pole' >Selectionner</button>
-            </div>
-        </div>
-        <div class="quickSelect">
-            <p class="title title--h2">Kata</p>
-            <div>
-                <button class="quickSelect_btn--select select--off" type='button' filter='kata'>Selectionner</button>
-            </div>
-        </div>
-        <div class="quickSelect">
-            <p class="title title--h2">Artibre</p>
-            <div>
-                <button class="quickSelect_btn--select select--off" type='button' filter='arbitre' >Selectionner</button>
-            </div>
-        </div>
-        <div class="quickSelect">
-            <p class="title title--h2">Commissaire</p>
-            <div>
-                <button class="quickSelect_btn--select select--off" type='button' filter='commissaire'>Selectionner</button>
-            </div>
-        </div>
-        <div class="quickSelect">
-            <p class="title title--h2">Staf</p>
-            <div>
-                <button class="quickSelect_btn--select select--off" type='button' filter='staf' >Selectionner</button>
+                <button class="filter__filter--select select--off" type='button' filter='prefesseur' >Filtrer</button>
             </div>
         </div>
         <div class="filter__filter">
             <p class="title title--h2">Professeur</p>
             <div>
-                <button class="filter__filter--select select--off" type='button' filter='prefesseur' >Selectionner</button>
+                <button class="filter__filter--select select--off" type='button' filter='prefesseur' >Filtrer</button>
+            </div>
+        </div>
+        <div class="filter__filter">
+            <p class="title title--h2">Annuler</p>
+            <div>
+                <button class="filter__cancel select--off" type='button' >Annuler</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="quickSelect__container container--off">
+        <div class="quickSelect">
+            <p class="title title--h2">Competition</p>
+            <div>
+                <button class="quickSelect__btn--select select--off" type='button' filter='competition' >Selectionner</button>
+            </div>
+        </div>
+        <div class="quickSelect">
+            <p class="title title--h2">Pole</p>
+            <div>
+                <button class="quickSelect__btn--select select--off" type='button' filter='pole' >Selectionner</button>
+            </div>
+        </div>
+        <div class="quickSelect">
+            <p class="title title--h2">Kata</p>
+            <div>
+                <button class="quickSelect__btn--select select--off" type='button' filter='kata'>Selectionner</button>
+            </div>
+        </div>
+        <div class="quickSelect">
+            <p class="title title--h2">Artibre</p>
+            <div>
+                <button class="quickSelect__btn--select select--off" type='button' filter='arbitre' >Selectionner</button>
+            </div>
+        </div>
+        <div class="quickSelect">
+            <p class="title title--h2">Commissaire</p>
+            <div>
+                <button class="quickSelect__btn--select select--off" type='button' filter='commissaire'>Selectionner</button>
+            </div>
+        </div>
+        <div class="quickSelect">
+            <p class="title title--h2">Staf</p>
+            <div>
+                <button class="quickSelect__btn--select select--off" type='button' filter='staf' >Selectionner</button>
+            </div>
+        </div>
+        <div class="quickSelect">
+            <p class="title title--h2">Professeur</p>
+            <div>
+                <button class="quickSelect__btn--select select--off" type='button' filter='prefesseur' >Selectionner</button>
+            </div>
+        </div>
+        <div class="quickSelect">
+            <p class="title title--h2">Reinitialiser</p>
+            <div>
+                <button class="quickSelect__cancel select--off" type='button' >Annuler</button>
             </div>
         </div>
     </div>
 </div>
 
-    <div class="card-container"></div>
+    
     {{ form_widget(form.destinataire) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn" id="submitForm">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

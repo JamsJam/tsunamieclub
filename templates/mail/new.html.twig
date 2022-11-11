@@ -3,19 +3,23 @@
 {% block title %}New Mail{% endblock %}
 
 {% block body %}
-<div class="mailForm">
-    <h1 class="title title--h1">Nouvelle info</h1>
+    <div class="mailForm">
+        <h1 class="title title--h1">Nouvelle info</h1>
+
+        <a href="{{ path('app_mail_index') }}" class"bouton bouton--return bouton--primary">Retour</a>
+
+        {{ include('mail/_form.html.twig') }}
+
+        <div class="card-container"></div>
+
+        <button type="button" class="bouton bouton--primary" id="submit">Valider</button>
+
+        
 
 
-    {{ include('mail/_form.html.twig') }}
-
-    
-
-    <a href="{{ path('app_mail_index') }}">Retour</a>
 
 
-
-</div>
+    </div>
 
 {% endblock %}
 {% block script %}
@@ -31,12 +35,12 @@ todo        a faire : pour chaque element dans données faire des checkboxs dans
 
 
         let container = document.querySelector(".card-container")
+        async function fetchAdherant() {
 {#
 ?       =====================================================================
 !       =================  Etape 1 : requete Ajax -> fetch  =================
 ?       =====================================================================
 #}
-        async function fetchAdherant() {
             //recuperation des donnée sur une route contenant les information au format JSON
             const requete = await fetch("{{path('app_json_adherant')}}",{
                 methode: 'GET'
@@ -121,26 +125,107 @@ todo        a faire : pour chaque element dans données faire des checkboxs dans
         fetchAdherant()
 
 
+
+
+{#
+?   ===================================================================================================
+!   ===============================       Toggle container filtre       ===============================
+?   ===================================================================================================
+#}
+
         filterToggle = document.querySelector('#getFilters');
         filterContainer = document.querySelector('.filter__container');
         filterToggle.addEventListener('click',()=>{
             filterContainer.classList.toggle('container--off')
             filterContainer.classList.toggle('container--on')
+            filterToggle.classList.toggle('button--close')
+            filterToggle.classList.toggle('button--open')
         })
 
-        let selectBtns = document.querySelectorAll(".filter__filter--select")
-            selectBtns.forEach(selectBtn => {
-                selectBtn.addEventListener('click',(e)=>{
-                    let filter = e.target.getAttribute('filter');
-                    let cards = document.querySelectorAll('.fetchAdherant')
-                    cards .forEach(card  => {
-                        if(card.getAttribute(filter) != 'true' && card.classList.contains('fetchAdherant--active') == false ){
-                            card.style.display = "none"
-                        }
-                        })
-                    });
+{#
+?   ===================================================================================================
+!   ==============================       Toggle container Selection      ==============================
+?   ===================================================================================================
+#}
+
+        selectToggle = document.querySelector('#getChecked');
+        selectContainer = document.querySelector('.quickSelect__container');
+        selectToggle.addEventListener('click',()=>{
+            selectContainer.classList.toggle('container--off')
+            selectContainer.classList.toggle('container--on')
+            selectToggle.classList.toggle('button--close')
+            selectToggle.classList.toggle('button--open')
+        })
+
+
+{#
+?   ===================================================================================================
+!   ==================================       Filtre Adherant         ==================================
+?   ===================================================================================================
+#}
+
+        let filterBtns = document.querySelectorAll(".filter__filter--select")
+        let filterCancelBtn = document.querySelector(".filter__cancel")
+
+        filterBtns.forEach(filterBtn => {
+            filterBtn.addEventListener('click',(e)=>{
+                let filter = e.target.getAttribute('filter');
+                let cards = document.querySelectorAll('.fetchAdherant')
+                cards .forEach(card  => {
+                    if(card.getAttribute(filter) != 'true' && card.classList.contains('fetchAdherant--active') == false ){
+                        card.style.display = "none"
+                    }
                 })
-            
-        </script>
+            });
+        })
+        filterCancelBtn.addEventListener('click',()=>{
+            let cards = document.querySelectorAll('.fetchAdherant')
+            cards.forEach(card => {
+                card.style.display="flex"
+            });
+        })
+{#
+?   ===================================================================================================
+!   ================================       Selection  Adherant         ================================
+?   ===================================================================================================
+#}
+
+        let quickSelectBtns = document.querySelectorAll(".quickSelect__btn--select")
+        let quickSelectCancelBtn = document.querySelector(".quickSelect__cancel")
+
+        quickSelectBtns.forEach(quickSelectBtn => {
+            quickSelectBtn.addEventListener('click',(e)=>{
+                console.log('hello');
+                let filter = e.target.getAttribute('filter');
+                let cards = document.querySelectorAll('.fetchAdherant')
+                cards.forEach(card => {
+                    if(card.getAttribute(filter) == 'true' && card.classList.contains('fetchAdherant--active') == false ){
+                        card.click()
+                    }
+                })
+            });
+        })
+        quickSelectCancelBtn.addEventListener('click',()=>{
+            let cards = document.querySelectorAll('.fetchAdherant')
+            let checkInputs = document.querySelectorAll('input[type=checkbox]')
+            cards.forEach(card => {
+                card.classList.remove('fetchAdherant--active')
+            });
+            checkInputs.forEach(checkInput => {
+                checkInput.removeAttribute('checked')
+            });
+        })
+
+        let btnSubmit = document.querySelector("#submit")
+        let submitForm = document.querySelector('#submitForm')
+        btnSubmit.addEventListener('click',()=>{
+            submitForm.click()
+        })
+
+
+
+
+
+    </script>
         
 {% endblock %}
