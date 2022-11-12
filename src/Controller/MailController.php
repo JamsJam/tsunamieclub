@@ -7,6 +7,8 @@ use App\Form\MailType;
 use App\Message\MailNotification;
 use App\Repository\MailRepository;
 use App\Repository\AdherantRepository;
+use DateTime;
+use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,37 +43,36 @@ class MailController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // dd($mail->getMessage());
-            //initialisation tableau des destinataire
-            $toAddresses = [];
-
+            $sendDate = new DateTimeImmutable();
+            $mail->setSendAt($sendDate);
             foreach ($mail->getDestinataire() as $destinataire) {
                 $destiMail = $destinataire->getEmail();
                 
             
-//? =================================================
-//*         *********** EMAIL ************
-//? =================================================
-                $content = $mail->getMessage();
-            $email = new MailNotification(
-//todo                 1) Sujet
-            $mail->getSujet(),
-//todo                 2) destinataire
-                        $destiMail,
-//todo                 3) expeditaire
-            "contact@tsunami.fr",
-//todo                 4) template
-            "mail/template_mail.html.twig",
-//todo                 5) parametres
-                [
-                    'content' => $content,
-                    'adherant'=> $destinataire
-                ]
-            );
-                        $bus->dispatch($email);
+                //? =================================================
+                //*         *********** EMAIL ************
+                //? =================================================
+                    $content = $mail->getMessage();
+                    $email = new MailNotification(
+                    //todo    1) Sujet
+                                $mail->getSujet(),
+                    //todo    2) destinataire
+                                $destiMail,
+                    //todo    3) expeditaire
+                                "contact@tsunami.fr",
+                    //todo    4) template
+                                "mail/template_mail.html.twig",
+                    //todo    5) parametres
+                                [
+                                    'content' => $content,
+                                    'adherant'=> $destinataire
+                                ]
+                        );
+                    $bus->dispatch($email);
     
-//? =================================================
-//*         *********** FIN EMAIL ************
-//? =================================================
+                //? =================================================
+                //*         *********** FIN EMAIL ************
+                //? =================================================
             }
         
         $mailRepository->add($mail, true);

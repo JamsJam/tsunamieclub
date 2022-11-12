@@ -3,37 +3,25 @@
 {% block title %}Mail index{% endblock %}
 
 {% block body %}
-    <h1>Mail index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Sujet</th>
-                <th>Message</th>
-                <th>SendAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="mailIndex">
+    <h1 class="title title--h1">Historique des mails</h1>
+    <div class="mailIndex__btns">
+        <a href="{{ path('app_userlanding') }}" class="bouton bouton--primary">Retour</a>
+        <a href="{{ path('app_mail_new') }}" class="bouton bouton--primary">Nouvelle information</a>
+    </div>
+    <div class="mailIndex__all">
         {% for mail in mails %}
-            <tr>
-                <td>{{ mail.id }}</td>
-                <td>{{ mail.sujet }}</td>
-                <td>{{ mail.message }}</td>
-                <td>{{ mail.sendAt ? mail.sendAt|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_mail_show', {'id': mail.id}) }}">show</a>
-                    <a href="{{ path('app_mail_edit', {'id': mail.id}) }}">edit</a>
-                </td>
-            </tr>
+            <a href="{{ path('app_mail_show',{'id' : mail.id}) }}">
+                <div class="mail">
+                    <div class="mail__date">{{mail.sendAt ? mail.sendAt|date('d / M / Y') : '' }}</div>
+                    <div class="mail__sujet">{{mail.sujet}}</div>
+                </div>
+            </a>
         {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
+            <div class="mail__noMail">Aucun mail n'as encore été écris</div>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
+</div>
 
-    <a href="{{ path('app_mail_new') }}">Create new</a>
+
 {% endblock %}

@@ -1,0 +1,87 @@
+@import '_mixin.scss';
+
+.mailIndex{
+    @include overlayImage('kata.webp');
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+
+    
+    &__btns {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: clamp(300px,90vw,1000px);
+        flex-wrap: wrap;
+
+        a{
+            margin-block : 1rem
+        }
+
+    }
+
+    &__all {
+        width: clamp(300px,90vw,1000px);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        padding-inline: 2rem;
+
+        a{
+            color: hsl(0, 0%, 10%);
+
+            .mail {
+                @include flex-row-center;
+                width: clamp(300px,80vw,980px);
+                margin-block: 1rem;
+
+
+                &__date {
+                    @include flex-row-center;
+                    width: 152px;
+                    background-color: hsla(0deg, 0%, 100%, 0.6);
+                    height: 6rem;
+                    padding-inline: 0.5rem;
+                    font-size: 1.2rem;
+                    margin-inline-end: 0.5rem;
+                    transition: 
+                        transform 300ms ease,
+                        background-color 200ms ease;
+                }
+
+                &__sujet {
+                    @include flex-row-center;
+                    background-color: hsla(0,0%,100%,0.6);
+                    height: 6rem;
+                    width: clamp(170px,33vw,900px);
+                    font-size: clamp(1.15rem, 0.9931rem + 0.7172vw, 1.8rem);
+                    padding-inline-start: 0.5rem;
+                    transition: 
+                        transform 300ms ease,
+                        background-color 200ms ease;
+                }
+
+                
+
+
+            }
+        &:hover{
+
+            .mail{
+                &__date,&__sujet{
+                    background-color: hsla(0,0%,100%,0.8);
+                    transform: translateY(-5px);
+                    transition: 
+                        transform 300ms ease,
+                        background-color 200ms ease;
+                }
+            }
+        }
+        }
+    }
+}

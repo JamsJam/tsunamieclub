@@ -34,7 +34,7 @@
                 padding:0.625rem;
                 @include radius(10px);
                 height: 157px;
-                width: clamp(16rem, 60vw, 62.5rem) ;
+                width: clamp(16rem, 60vw, 59rem) ;
             }
             input[type=text]{
                 padding-left:0.625rem;
@@ -43,7 +43,7 @@
                 border:none;
                 outline: none;
                 height: 50px;
-                width: clamp(16rem, 60vw, 62.5rem)
+                width: clamp(16rem, 60vw, 59rem)
 
             }
             label{
@@ -93,6 +93,8 @@
 //*                                               Selection rapide des adherants
 //?                 ==========================================================================================
         .quickSelect{
+
+            text-align: center;
 
             &__container{
 

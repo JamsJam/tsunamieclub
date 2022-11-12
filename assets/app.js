@@ -21,6 +21,7 @@ import './styles/userIndex.scss';
 import './styles/roleForm.scss';
 import './styles/administratifForm.scss';
 import './styles/mail.scss';
+import './styles/mailIndex.scss';
 
 // import './styles/_set.scss';
 
