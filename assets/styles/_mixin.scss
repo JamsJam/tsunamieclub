@@ -134,8 +134,7 @@ $overlay1: #fefefe;
 
 
 @mixin overlayImage($image){
-    //! transition keyframe moche !
-    // background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("../images/"+$image);
+    
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("../images/"+$image);
     background-position: center;
     background-repeat: no-repeat;

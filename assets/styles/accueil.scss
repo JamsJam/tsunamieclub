@@ -3,16 +3,18 @@
 
 
 .overlay{
+
     @include flex-column-around ;
-        height: 30rem;
+    height: 30rem;
+    transition: background-color 0.3s ease-in-out;
+    &:hover{
         transition: background-color 0.3s ease-in-out;
+    }
+
     
-        :hover{
-            transition: background-color 0.3s ease-in-out;
-        }
 }
 section{
-    
+    height:30rem;
     color:$font__color--primary;
 }
 
@@ -20,7 +22,6 @@ p.introduction{
     
     padding-inline: 1.25rem;
     text-align: center;
-    letter-spacing: 2
     
 }
 
@@ -30,17 +31,44 @@ p.introduction{
     transition: all 1s linear;
     
     .overlay{
-        @include overlay(hsla(0, 0%, 18%, 0.83));
-        &:hover{
-            @include overlay(transparent);
+        &--color{
+
+            @include overlay(hsla(0, 0%, 18%, 0.83));
+            &:hover{
+                @include overlay(transparent);
+            }
         }
 
     }
 
     
     &__content{
-        display:none;
+        // display: none!important;
+        height: 30rem;
+        @include flex-column-around;
+        
+        
+
+
+        &--show{
+            opacity: 1;
+            transform: translateY(0px);
+            transition: 
+                opacity 0.3s 1.4s ease,
+                transform 0.5s 1.1s ease;
+        }
+        &--hidden{
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.2s ease
+
+        }
+
+        & p{
+            padding-inline-start: 3rem
+        }
     }
+
     
 }
 
@@ -48,7 +76,7 @@ p.introduction{
 .double-section{
 
     @include flex-row-center;
-    
+    position:relative;
 
     section{
         width: max(50vw,320px);
@@ -57,9 +85,13 @@ p.introduction{
             @include overlayImage("cours-judo.webp");
 
             .overlay{
-                @include overlay(hsla(41, 36%, 47%, 0.83));
-                &:hover{
-                    @include overlay(transparent);
+                
+                &--color{
+                    @include overlay(hsla(41, 36%, 47%, 0.83));
+                    
+                    &:hover{
+                        @include overlay(transparent);
+                    }
                 }
             }
         }
@@ -67,9 +99,13 @@ p.introduction{
             @include overlayImage("pratique-judo.webp");
 
             .overlay{
-                @include overlay(hsla(0, 25%, 40%, 0.83));
-                &:hover{
-                    @include overlay(transparent);
+                
+                &--color{
+                    @include overlay(hsla(0, 25%, 40%, 0.83));
+                    
+                    &:hover{
+                        @include overlay(transparent);
+                    }
                 }
             }
         }
@@ -77,9 +113,13 @@ p.introduction{
             @include overlayImage("competition-judo.webp");
 
             .overlay{
-                @include overlay(hsla(220, 2%, 35%, 0.83));
-                &:hover{
-                    @include overlay(transparent);
+                
+                &--color{
+                    @include overlay(hsla(220, 2%, 35%, 0.83));
+                    
+                    &:hover{
+                        @include overlay(transparent);
+                    }
                 }
             }
         }
@@ -87,9 +127,13 @@ p.introduction{
             @include overlayImage("contact.webp");
 
             .overlay{
-                @include overlay(hsla(0, 0%, 20%, 0.70));
-                &:hover{
-                    @include overlay(transparent);
+                
+                &--color{
+                    @include overlay(hsla(0, 0%, 20%, 0.70));
+                    
+                    &:hover{
+                        @include overlay(transparent);
+                    }
                 }
             }
         }
@@ -119,6 +163,13 @@ p.introduction{
     }
 }
 
+.bigDiv{
+    height : 70rem;
+    padding-block : 2rem;
+    
+    
+
+}
 
 
 

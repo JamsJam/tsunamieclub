@@ -5,7 +5,7 @@
 {% block body %}
 
     <section class="club" id="club">
-        <div class="overlay">
+        <div class="overlay overlay--color">
 
             <div class="club__mainTitle">
                 <h1 class=" title title--h1">
@@ -46,7 +46,7 @@
             <a href="javascript:getClubContent()" class="bouton bouton--secondary" id="boutonClub">Mon Club</a>
 
         </div>
-        <div class="club__content" id="content">
+        <div class="club__content club__content--hidden" id="content">
 
             <h3>Lorem ipsum dolor sit.</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, provident?</p>
@@ -62,7 +62,7 @@
     <div class="double-section">
 
         <section class="horaire" id="horaire">
-            <div class="overlay">
+            <div class="overlay overlay--color">
 
                 <div class="title">
                     <h2 class="title title--h2">Des entrainement adaptés pour tous </h2>
@@ -76,7 +76,7 @@
         </section>
 
         <section class="discipline" id="discipline">
-            <div class="overlay">
+            <div class="overlay overlay--color">
 
                 <div class="title">
                     <h2 class="title title--h2">Une pratique variée</h2>
@@ -94,7 +94,7 @@
     <div class="double-section">
 
         <section class="evenement" id="evenement">
-            <div class="overlay">
+            <div class="overlay overlay--color">
 
                 <div class="title">
                     <h2 class="title title--h2">Un club  de Judo dynamique</h2>
@@ -102,13 +102,13 @@
 
                 <p class="introduction">Que ça soit en terme de competition, de stage ou de formation, le tsunami club participe et organise de nombreux evenements</p>
 
-                <a href="#" class="bouton bouton--secondary"  id="boutonEvenement">Horaires</a>
+                <a href="#" class="bouton bouton--secondary"  id="boutonEvenement">Evenement</a>
 
             </div>
         </section>
 
         <section class="contact" id="contact">
-            <div class="overlay">
+            <div class="overlay overlay--color">
 
                 <div class="title">
                     <h2 class="title title--h2">Un contact facilité et privilegié</h2>
@@ -116,14 +116,14 @@
 
                 <p class="introduction">Une question sur le judo ou notre club ? Contactez nous</p>
 
-                <a href="#" class="bouton bouton--secondary"  id="boutonContact">Les disciplines</a>
+                <a href="#" class="bouton bouton--secondary"  id="boutonContact">Contact</a>
 
             </div>
         </section>
 
     </div>
     <section class="inscription">
-        <div class="overlay">
+        <div class="overlay overlay--color">
 
             <div class="inscription__title">
                 <h2 class="title title--h1">
@@ -148,4 +148,19 @@
 {#
 todo      javascript : 1. augmenter width 2. augmenter height 3. faire apparaitre le contenu
 #}
+
+<script>
+    
+    function getClubContent(){
+        document.querySelector('#club>div:first-child').classList.toggle("overlay--color");
+        document.querySelector('#club').classList.toggle("bigDiv");
+        // setTimeout(() => {
+            // document.querySelector('.club__content').style.display ='flex'
+            document.querySelector('.club__content').classList.toggle('club__content--hidden')
+            document.querySelector('.club__content').classList.toggle('club__content--show')
+        // }, 600);
+    }
+
+    
+</script>
 {% endblock %}
