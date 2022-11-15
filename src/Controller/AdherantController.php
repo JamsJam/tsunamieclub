@@ -21,9 +21,11 @@ class AdherantController extends AbstractController
      */
     public function index(AdherantRepository $adherantRepository, GradeRepository $gradeRepository): Response
     {
+        $filters = ["competiteur","arbitre","commissaire","pole","professeur",'kata'];
         return $this->render('adherant/index.html.twig', [
             'adherants' => $adherantRepository->findAll(),
             'grades' => $gradeRepository->findAll(),
+            'filtres'=>$filters
         ]);
     }
 

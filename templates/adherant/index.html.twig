@@ -16,64 +16,64 @@
         <input type="text" name="" id="" class="search--input" placeholder="Rechercher nom,prenom,licence">
     </form>
 
-    <div class="userIndex__filters">
+    <div class="userIndex__filters" >
         <div class="filters">
             
             <div class="filters__items">
                 <p>Competiteur</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="competiteur" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Kata</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="kata" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Arbitre</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="arbitre" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Commissaire</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="commissaire" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Pole</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="pole" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Professeur</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="professeur" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Impayer</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="Impayer" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Non licencié</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="licence" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Non validé</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="validate" class="toggle toggle--off">
             </div>
             
             <div class="filters__items">
                 <p>Sans certificat</p>
-                <input type="checkbox" name="" id="" class="toggle toggle--off">
+                <input type="checkbox" filtre="certificat" class="toggle toggle--off">
             </div>
 
         </div>
         
         <div class="filters__select">
             
-            <div class="select__grade">
+            <div class="select__grade wrapper">
                 <select name="" id="">
                     <option value="">Grade</option>
                     {% for grade in grades %}
@@ -83,7 +83,7 @@
                 </select>
             </div>
 
-            <div class="select__categorie">
+            <div class="select__categorie wrapper">
                 <select name="" id="">
                     <option value="">Catégorie</option>
                     <option value="Vétérant">Vétérant</option>
@@ -99,14 +99,126 @@
 
         </div>
 
-        <a href="#" class="bouton bouton--primary">Filtrer</a>
+        <a href="#" class="bouton bouton--primary" id="filterBtn">Filtrer</a>
     </div>
 
     <div class="userIndex__grid">
 
     {% for adherant in adherants %}
+
+    {% set difference = date('now').diff(date(adherant.dateDeNaissance)) %}
+                    {% set age = difference.days %}
+                    {#todo a partir de l'age, deduire la categorie d'age de l'adherant  #}
+                    {#? Age = nombre de jours de la naissance a maintenant  #}
+
+                        {#? age = +30ans  #}
+                    {% if  (30*365.25)-122 < age   %}
+                            {% set categorieAge = 'Veterant' %}
+                        
+                            {#? age = 20-30ans  #}
+
+                        {% elseif  (20*365.25)-122 < age and age < (30*365.25)-123 %}
+                            {% set categorieAge = 'Senior' %}
+                        
+                            {#? age = 19ans  #}
+
+                        {% elseif (19*365.25)-122 < age and age < (20*365.25)-123 %}
+                            {% set categorieAge = 'Junior 3' %}
+                        
+                            {#? age = 18ans  #}
+
+                        {% elseif (18*365.25)-122 < age and age < (19*365.25)-123 %}
+                            {% set categorieAge = 'Junior 2' %}
+                        
+                            {#? age =  17ans  #}
+
+                        {% elseif (17*365.25)-122 < age and age < (18*365.25)-123 %}
+                            {% set categorieAge = 'Junior 1' %}
+                        
+                            {#? age = 16ans  #}
+
+                        {% elseif (16*365.25)-122 < age and age < (17*365.25)-123 %}
+                            {% set categorieAge = 'Cadet 3' %}
+                        
+                            {#? age = 15ans  #}
+
+                        {% elseif (15*365.25)-122 < age and age < (16*365.25)-123 %}
+                            {% set categorieAge = 'Cadet 2' %}
+                        
+                            {#? age = 14ans  #}
+
+                        {% elseif (14*365.25)-122 < age and age < (15*365.25)-123 %}
+                            {% set categorieAge = 'Cadet 1' %}
+                        
+                            {#? age = 13ans  #}
+
+                        {% elseif (13*365.25)-122 < age and age < (14*365.25)-123 %}
+                            {% set categorieAge = 'Minime 2' %}
+                        
+                            {#? age = 12ans  #}
+
+                        {% elseif (12*365.25)-122 < age and age < (13*365.25)-123 %}
+                            {% set categorieAge = 'Minime 1' %}
+                        
+                            {#? age = 11ans  #}
+
+                        {% elseif (11*365.25)-122 < age and age < (12*365.25)-123 %}
+                            {% set categorieAge = 'Binjamin 2' %}
+                        
+                            {#? age =  10ans #}
+
+                        {% elseif (10*365.25)-122 < age and age < (11*365.25)-123 %}
+                            {% set categorieAge = 'Binjamin 1' %}
+                        
+                            {#? age = 9ans  #}
+
+                        {% elseif (9*365.25)-122 < age and age < (10*365.25)-123 %}
+                            {% set categorieAge = 'Poussin 2' %}
+                        
+                            {#? age = 8ans  #}
+
+                        {% elseif (8*365.25)-122 < age and age < (9*365.25)-123 %}
+                            {% set categorieAge = 'Binjamin 1' %}
+                        
+                            {#? age =  7ans #}
+
+                        {% elseif (7*365.25)-122 < age and age < (8*365.25)-123 %}
+                            {% set categorieAge = 'Prépoussin 2' %}
+                        
+                            {#? age = 6ans  #}
+
+                        {% elseif (6*365.25)-122 < age and age < (7*365.25)-123 %}
+                            {% set categorieAge = 'Prépoussin 1' %}
+                        
+                            {#? age = -5ans  #}
+
+                        {% elseif  age < (6*365.25)-123 %}
+                            {% set categorieAge = 'Baby Judo' %}
+
+                    {% endif %}
         
-        <div class="cell">
+        <div 
+            class="cell" 
+            categorie="{{categorieAge}}" 
+            {% if adherant.roleClub %}
+                
+                {% for filtre in filtres %}
+                    {% set varFiltre = filtre %}
+                
+                    {{filtre}}="{{attribute(adherant.roleClub,filtre) == 1 ? "true" : "false" }}"
+                {% endfor %}   
+                grade="{{adherant.roleClub.grade.ceinture}}"
+            {% else %}
+                
+                {% for filtre in filtres %}
+                
+                    {{filtre}}='null'
+
+                {% endfor %}
+                grade="null"
+            {% endif %}
+        >
+
             <div class="cell--1">
                 <p>{{adherant.nom|upper}}</p>
                 <p>{{adherant.prenom|capitalize}}</p>
@@ -127,95 +239,8 @@
             {% endif %}
 
                 <p>
-                    {% set difference = date('now').diff(date(adherant.dateDeNaissance)) %}
-                    {% set age = difference.days %}
-                    {#todo a partir de l'age, deduire la categorie d'age de l'adherant  #}
-                    {#? Age = nombre de jours de la naissance a maintenant  #}
-                        {#? age = +30ans  #}
-                    {% if  (30*365.25)-122 < age   %}
-                            Veterant
-                        
-                            {#? age = 20-30ans  #}
-
-                        {% elseif  (20*365.25)-122 < age and age < (30*365.25)-123 %}
-                            Senior
-                        
-                            {#? age = 19ans  #}
-
-                        {% elseif (19*365.25)-122 < age and age < (20*365.25)-123 %}
-                            Junior 3
-                        
-                            {#? age = 18ans  #}
-
-                        {% elseif (18*365.25)-122 < age and age < (19*365.25)-123 %}
-                            Junior 2
-                        
-                            {#? age =  17ans  #}
-
-                        {% elseif (17*365.25)-122 < age and age < (18*365.25)-123 %}
-                            Junior 1
-                        
-                            {#? age = 16ans  #}
-
-                        {% elseif (16*365.25)-122 < age and age < (17*365.25)-123 %}
-                            Cadet 3
-                        
-                            {#? age = 15ans  #}
-
-                        {% elseif (15*365.25)-122 < age and age < (16*365.25)-123 %}
-                            Cadet 2
-                        
-                            {#? age = 14ans  #}
-
-                        {% elseif (14*365.25)-122 < age and age < (15*365.25)-123 %}
-                            Cadet 1
-                        
-                            {#? age = 13ans  #}
-
-                        {% elseif (13*365.25)-122 < age and age < (14*365.25)-123 %}
-                            Minime 2
-                        
-                            {#? age = 12ans  #}
-
-                        {% elseif (12*365.25)-122 < age and age < (13*365.25)-123 %}
-                            Minime 1
-                        
-                            {#? age = 11ans  #}
-
-                        {% elseif (11*365.25)-122 < age and age < (12*365.25)-123 %}
-                            Benjamin 2
-                        
-                            {#? age =  10ans #}
-
-                        {% elseif (10*365.25)-122 < age and age < (11*365.25)-123 %}
-                            Benjamin 1
-                        
-                            {#? age = 9ans  #}
-
-                        {% elseif (9*365.25)-122 < age and age < (10*365.25)-123 %}
-                            Poussin 2
-                        
-                            {#? age = 8ans  #}
-
-                        {% elseif (8*365.25)-122 < age and age < (9*365.25)-123 %}
-                            Poussin 1
-                        
-                            {#? age =  7ans #}
-
-                        {% elseif (7*365.25)-122 < age and age < (8*365.25)-123 %}
-                            Prépoussin 2
-                        
-                            {#? age = 6ans  #}
-
-                        {% elseif (6*365.25)-122 < age and age < (7*365.25)-123 %}
-                            Prépoussin 1
-                        
-                            {#? age = -5ans  #}
-
-                        {% elseif  age < (6*365.25)-123 %}
-                            Baby-Judo
-
-                    {% endif %}
+                    
+                    {{categorieAge}}
 
 
                 </p>
@@ -241,4 +266,48 @@
 
     </div>
 </div>
+{% endblock %}
+{% block script %}
+    <script>
+        let cards = document.querySelectorAll('.cell')
+        let toggleSwitchs = document.querySelectorAll(".toggle")
+        toggle_on_off()
+
+        let filterBtn = document.querySelector('#filterBtn')
+        filterBtn.addEventListener('click',(e)=>{
+            e.preventDefault()
+            let filtreActifs = []
+            
+            toggleSwitchs.forEach(toggleSwitch => {
+                let toggleFilters = toggleSwitch.getAttribute('filtre')
+                if (toggleSwitch.checked) {
+                    filtreActifs.push(toggleFilters)
+                }
+            });
+            //!  console.log(filtreActifs);
+            //!  console.log(filtreActifs.length );
+            if (filtreActifs.length == 0) {
+                cards.forEach(card => {
+                    card.removeAttribute("style")
+                });
+            } else {
+                
+            
+                cards.forEach(card => {
+                    let verify = []
+                    filtreActifs.forEach(filtreActif => {
+                        verify.push(card.getAttribute(filtreActif))
+                    });
+                    const fullTrue = (val) => val == 'true'
+                    //!  console.log(verify);
+                    //!  console.log(verify.every(fullTrue));
+                    if(!verify.every(fullTrue)){
+                        card.style.display = "none"
+                    }
+                });
+            }
+        });
+        
+
+    </script>
 {% endblock %}

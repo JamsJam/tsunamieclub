@@ -52,21 +52,29 @@
             gap: 1rem;
             margin-block: 2rem;
             width: clamp(300px, 70vw, 67.75rem);
-            justify-items: center;
+            justify-items: start;
             justify-content: center;
 
 
             
             &__items{
                 @include flex-column-between;
-                height: 3.5rem;
+                height: 4.5rem;
+
+                .toggle{
+                    align-self: start;
+                }
             }
         }
         
         .filters__select{
             @include flex-row-around;
-            margin-block: 2rem;
             width:clamp(300px,70vw,67.75rem);
+            flex-wrap: wrap;
+            
+            .wrapper{
+                margin: 1rem
+            }
         
         }
 

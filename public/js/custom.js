@@ -123,3 +123,26 @@ function hideNavMobile() {
 //             });
 //         };
 //     };
+
+
+//?     ===============================================
+//!     ================= Fonction Toggle =============
+//?     ===============================================
+//todo   selectionner les toggles avec : let toggleSwitchs = document.querySelectorAll(".toggle")
+
+function toggle_on_off(){
+
+    toggleSwitchs.forEach(toggleSwitch => {
+        toggleSwitch.addEventListener('click',() => {
+            if(toggleSwitch.checked){
+                
+                toggleSwitch.classList.remove("toggle--off");
+                toggleSwitch.classList.add("toggle--on");
+            }
+            else{
+                toggleSwitch.classList.remove("toggle--on");
+                toggleSwitch.classList.add("toggle--off");
+            }
+        })
+    });
+}
